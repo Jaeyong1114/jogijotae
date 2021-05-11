@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
-//박재현
+//섹스
     <EditText
         android:id="@+id/et_id"
         android:layout_width="wrap_content"
