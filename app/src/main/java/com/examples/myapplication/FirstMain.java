@@ -14,8 +14,8 @@ public class FirstMain extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_main);
-    btn01=findViewById(R.id.button2);
-    btn02=findViewById(R.id.button);
+    btn01=findViewById(R.id.button);
+    btn02=findViewById(R.id.button2);
     btn01.setOnClickListener(this);
     btn02.setOnClickListener(this);
 
@@ -26,12 +26,12 @@ public class FirstMain extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        if (v.getId()== R.id.button2) {
+        if (v.getId()== R.id.button) {
             Intent intent01 = new Intent(this, LoginActivity.class);
             startActivity(intent01);
 
         }
-        if(v.getId()==R.id.button){
+        if(v.getId()==R.id.button2){
 
         }
     }
