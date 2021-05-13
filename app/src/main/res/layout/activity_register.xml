@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
-//섹스
+//인생 좆 같네
     <EditText
         android:id="@+id/et_id"
         android:layout_width="wrap_content"
