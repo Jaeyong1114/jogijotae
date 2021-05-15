@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "287881444241",
+    "project_id": "jogijotae-b10e1",
+    "storage_bucket": "jogijotae-b10e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287881444241:android:ad62e328668887aa873830",
+        "android_client_info": {
+          "package_name": "com.examples.jogijotae"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "287881444241-gvnbfm3109ukmjmcmbshafddgf0i8k6u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.examples.jogijotae",
+            "certificate_hash": "b4322bb7e001a8719bdadc8e16bcd45ea8afb15f"
+          }
+        },
+        {
+          "client_id": "287881444241-nqo2rb4fo2etuamon4t00laoa01of81k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJOckzNVXjk8_2Gi1xwftqtRS9C7mqTYo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "287881444241-nqo2rb4fo2etuamon4t00laoa01of81k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287881444241:android:45742086168e533c873830",
+        "android_client_info": {
+          "package_name": "com.examples.practice201608455"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "287881444241-nqo2rb4fo2etuamon4t00laoa01of81k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJOckzNVXjk8_2Gi1xwftqtRS9C7mqTYo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "287881444241-nqo2rb4fo2etuamon4t00laoa01of81k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

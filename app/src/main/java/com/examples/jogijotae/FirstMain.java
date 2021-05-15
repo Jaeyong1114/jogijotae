@@ -37,8 +37,8 @@ public class FirstMain extends AppCompatActivity implements View.OnClickListener
             startActivity(intent01);
         }
         if(v.getId()==R.id.button3){
-            Intent intent01 = new Intent(this, RegisterActivity.class);
-            startActivity(intent01);
+            Intent intent02 = new Intent(this, RegisterActivity.class);
+            startActivity(intent02);
         }
     }
 }
