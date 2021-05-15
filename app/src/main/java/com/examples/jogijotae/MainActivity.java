@@ -1,14 +1,14 @@
-package com.examples.myapplication;
+package com.examples.jogijotae;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class LoginActivity extends AppCompatActivity {
-//수정란
+public class MainActivity extends AppCompatActivity {
+//다시수정한다 씨팔
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_main);
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.examples.myapplication">
+    package="com.examples.jogijotae">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,17 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name="com.examples.jogijotae.LoginActivity"></activity>
 
-        <activity android:name=".FirstMain">
+        <activity android:name="com.examples.jogijotae.FirstMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name="com.examples.jogijotae.RegisterActivity" />
+        <activity android:name="com.examples.jogijotae.MainActivity"></activity>
     </application>
 
 </manifest>
