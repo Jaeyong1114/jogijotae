@@ -27,12 +27,12 @@ public class FirstMain extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         if (v.getId()== R.id.button) {
-            Intent intent01 = new Intent(this, LoginActivity.class);
-            startActivity(intent01);
+
 
         }
         if(v.getId()==R.id.button2){
-
+            Intent intent01 = new Intent(this, LoginActivity.class);
+            startActivity(intent01);
         }
     }
 }
