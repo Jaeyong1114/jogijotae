@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
-//하씨팔
+//하씨팔 왜안돼
 
     <EditText
         android:id="@+id/et_id"
