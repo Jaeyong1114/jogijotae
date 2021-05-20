@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">jogijotae</string>
+    <string name="app_name">조기조태</string>
+
+    <string name="naver_client_id">ssK4uNlaa6yEoHQydms3</string>
+    <string name="naver_client_secret">NGPix3k1NF</string>
+    <string name="naver_client_name">조기조태</string>
 </resources>
