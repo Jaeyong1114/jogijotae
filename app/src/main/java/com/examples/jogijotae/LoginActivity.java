@@ -54,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = edit01.getText().toString().trim();
                 String pwd = edit02.getText().toString().trim();
+           
                 firebaseAuth.signInWithEmailAndPassword(email,pwd)
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -63,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                                     startActivity(intent);
 
                                 }else{
-                                    Toast.makeText(LoginActivity.this,"로그인 오류",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this,"아이디 또는 패스워드를 확인해주세요",Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

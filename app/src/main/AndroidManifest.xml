@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,17 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name="com.examples.jogijotae.LoginActivity"></activity>
-
-        <activity android:name="com.examples.jogijotae.FirstMain">
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".FirstMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.examples.jogijotae.RegisterActivity" />
-        <activity android:name="com.examples.jogijotae.MainActivity"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
