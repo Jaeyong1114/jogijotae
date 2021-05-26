@@ -44,6 +44,8 @@ public class InterestCheck extends AppCompatActivity {
         addLoginInfo(name, email, gender, birthyear, mobile);
     }
 
+    // DB에 user 값 저장
+
     public void addLoginInfo(String name, String email, String gender, String birthyear, String mobile) {
         naver_login naver_login = new naver_login(name, email, gender, birthyear, mobile);
 
