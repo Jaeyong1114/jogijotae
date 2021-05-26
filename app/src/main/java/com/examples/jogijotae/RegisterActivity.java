@@ -53,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity  {
         edit02 = findViewById(R.id.et_pw);
         edit03 = findViewById(R.id.et_check);
         btn01 = findViewById(R.id.btn_register);
-        edit04 = findViewById(R.id.et_age);
+
 
         //파이어베이스 user 로 접글
 
@@ -87,14 +87,14 @@ public class RegisterActivity extends AppCompatActivity  {
                                 FirebaseUser user = firebaseAuth.getCurrentUser();
                                 String email = user.getEmail();
                                 String uid = user.getUid();
-                                String age = edit04.getText().toString().trim();
+
 
                                 //해쉬맵 테이블을 파이어베이스 데이터베이스에 저장
                                 HashMap<Object,String> hashMap = new HashMap<>();
 
                                 hashMap.put("uid",uid);
                                 hashMap.put("email",email);
-                                hashMap.put("age",age);
+
 
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                                 DatabaseReference reference = database.getReference("Users");
