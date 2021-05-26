@@ -3,6 +3,7 @@ package com.examples.jogijotae;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.nhn.android.naverlogin.OAuthLogin;
 import com.nhn.android.naverlogin.OAuthLoginHandler;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.concurrent.ExecutionException;
 
 public class FirstMain extends AppCompatActivity implements View.OnClickListener {
     Button btn01,btn02,btn03;
@@ -62,7 +68,9 @@ public class FirstMain extends AppCompatActivity implements View.OnClickListener
                         Log.i("LoginData","refreshToken : "+ refreshToken);
                         Log.i("LoginData","expiresAt : "+ expiresAt);
                         Log.i("LoginData","tokenType : "+ tokenType);
-                        redirectSignup();
+
+                        RequestApiTask task = new RequestApiTask(mContext, mOAuthLoginModule);
+                        task.execute();
 
                     } else {
                         String errorCode = mOAuthLoginModule
@@ -87,9 +95,53 @@ public class FirstMain extends AppCompatActivity implements View.OnClickListener
         }
     }
 
-    public void redirectSignup() {
-        Intent intent03 = new Intent(FirstMain.this, MainActivity.class);
-        startActivity(intent03);
+    // 네이버 로그인시 사용자 정보 받기
+
+    public class RequestApiTask extends AsyncTask<Void, Void, String> {
+        private final Context mContext;
+        private final OAuthLogin mOAuthLoginModule;
+        public RequestApiTask(Context mContext, OAuthLogin mOAuthLoginModule) {
+            this.mContext = mContext;
+            this.mOAuthLoginModule = mOAuthLoginModule;
+        }
+
+        @Override
+        protected void onPreExecute() {}
+
+        @Override
+        protected String doInBackground(Void... params) {
+            String url = "https://openapi.naver.com/v1/nid/me";
+            String at = mOAuthLoginModule.getAccessToken(mContext);
+            return mOAuthLoginModule.requestApi(mContext, at, url);
+        }
+
+        public void onPostExecute(String content) {
+            try {
+                JSONObject loginResult = new JSONObject(content);
+                if (loginResult.getString("resultcode").equals("00")){
+                    JSONObject response = loginResult.getJSONObject("response");
+                    String name = response.getString("name");
+                    String email = response.getString("email");
+                    String gender = response.getString("gender");
+                    String birthyear = response.getString("birthyear");
+                    String mobile = response.getString("mobile");
+
+                    Toast.makeText(mContext, "name : " + name + " email : " + email + " gender : " + gender + " birthyear : " + birthyear
+                            + " mobile : " + mobile, Toast.LENGTH_LONG).show();
+
+                    Intent interestCheck = new Intent(FirstMain.this, InterestCheck.class);
+                    interestCheck.putExtra("name", name);
+                    interestCheck.putExtra("email", email);
+                    interestCheck.putExtra("gender", gender);
+                    interestCheck.putExtra("birthyear", birthyear);
+                    interestCheck.putExtra("mobile", mobile);
+                    startActivity(interestCheck);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }
