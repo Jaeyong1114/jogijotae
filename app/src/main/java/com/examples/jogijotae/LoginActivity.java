@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
 
     Button btn01;
     TextView Registertxt;
-
+    TextView PWreset;
     EditText edit01,edit02;
     private FirebaseAuth firebaseAuth;
     @Override
@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
 
         firebaseAuth =  FirebaseAuth.getInstance();
         //버튼 등록하기
+        PWreset = findViewById(R.id.pw_resettext);
         Registertxt = findViewById(R.id.registertxt);
         btn01 = findViewById(R.id.btn_login);
         edit01 = findViewById(R.id.et_id);
@@ -46,6 +47,18 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+
+        PWreset.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                //intent함수를 통해 password_reset액티비티 함수를 호출한다.
+                startActivity(new Intent(LoginActivity.this,password_reset.class));
+
+            }
+        });
+
 
         //로그인 버튼이 눌리면
         btn01.setOnClickListener(new View.OnClickListener(){
