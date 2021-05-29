@@ -41,7 +41,6 @@ public class RegisterActivity extends AppCompatActivity  {
         actionBar.setDisplayHomeAsUpEnabled(true); //뒤로가기버튼
         actionBar.setDisplayShowHomeEnabled(true); //홈 아이콘
 
-
 // Initialize Firebase Auth
 
         //파이어베이스 접근 설정
