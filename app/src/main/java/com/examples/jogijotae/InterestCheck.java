@@ -63,8 +63,6 @@ public class InterestCheck extends AppCompatActivity {
         String birthyear = data_recevie.getStringExtra("birthyear");
         String mobile = data_recevie.getStringExtra("mobile");
 
-
-
         if (name.length() >1 ) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             FirebaseFirestore db = FirebaseFirestore.getInstance();
