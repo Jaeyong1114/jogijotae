@@ -59,7 +59,7 @@ public class Userinformation extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 startToast("회원정보 등록을 성공하였습니다.");
-                                Intent intent = new Intent(Userinformation.this, MainActivity.class);
+                                Intent intent = new Intent(Userinformation.this, User_interest.class);
                                 startActivity(intent);
                             }
                         })

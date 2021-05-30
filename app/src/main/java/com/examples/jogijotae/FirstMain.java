@@ -18,8 +18,6 @@ import com.nhn.android.naverlogin.OAuthLoginHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.concurrent.ExecutionException;
-
 public class FirstMain extends AppCompatActivity implements View.OnClickListener {
     Button btn01,btn02,btn03;
 
@@ -129,7 +127,7 @@ public class FirstMain extends AppCompatActivity implements View.OnClickListener
                     Toast.makeText(mContext, "name : " + name + " email : " + email + " gender : " + gender + " birthyear : " + birthyear
                             + " mobile : " + mobile, Toast.LENGTH_LONG).show();
 
-                    Intent interestCheck = new Intent(FirstMain.this, InterestCheck.class);
+                    Intent interestCheck = new Intent(FirstMain.this, Naver_information.class);
                     interestCheck.putExtra("name", name);
                     interestCheck.putExtra("email", email);
                     interestCheck.putExtra("gender", gender);
