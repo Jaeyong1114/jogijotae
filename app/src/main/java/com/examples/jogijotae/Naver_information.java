@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,16 +13,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.Exclude;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.Calendar;
-import java.util.Date;
-
-public class InterestCheck extends AppCompatActivity {
+public class Naver_information extends AppCompatActivity {
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -35,7 +28,7 @@ public class InterestCheck extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_interest_check);
+        setContentView(R.layout.naver_information);
 
        Intent data_recevie = getIntent();
 
@@ -76,7 +69,7 @@ public class InterestCheck extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 startToast("회원정보 등록을 성공하였습니다.");
-                                Intent intent = new Intent(InterestCheck.this, MainActivity.class);
+                                Intent intent = new Intent(Naver_information.this, User_interest.class);
                                 startActivity(intent);
                             }
                         })
