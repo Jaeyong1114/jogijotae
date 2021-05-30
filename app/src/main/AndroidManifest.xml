@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".password_reset"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".password_reset" />
         <activity android:name=".InterestCheck" />
         <activity android:name=".RequestApiTask" />
         <activity android:name=".LoginActivity" />
@@ -24,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Userinformation" />
     </application>
 
 </manifest>
