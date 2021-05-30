@@ -70,6 +70,11 @@ public class Naver_information extends AppCompatActivity {
                             public void onSuccess(Void aVoid) {
                                 startToast("회원정보 등록을 성공하였습니다.");
                                 Intent intent = new Intent(Naver_information.this, User_interest.class);
+                                intent.putExtra("email", email);
+                                intent.putExtra("birthyear", birthyear);
+                                intent.putExtra("gender", gender);
+                                intent.putExtra("name", name);
+                                intent.putExtra("mobile", mobile);
                                 startActivity(intent);
                             }
                         })

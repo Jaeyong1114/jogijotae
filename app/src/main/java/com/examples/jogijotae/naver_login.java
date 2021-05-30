@@ -2,7 +2,6 @@ package com.examples.jogijotae;
 
 public class naver_login {
     String name;
-
     String gender;
     String birthyear;
     String mobile;
@@ -16,10 +15,6 @@ public class naver_login {
     public void setName(String name) {
         this.name = name;
     }
-
-
-
-
 
     public String getGender() {
         return gender;
@@ -47,7 +42,6 @@ public class naver_login {
 
     public naver_login(String name,  String gender, String birthyear, String mobile) {
         this.name = name;
-
         this.gender = gender;
         this.birthyear = birthyear;
         this.mobile = mobile;
