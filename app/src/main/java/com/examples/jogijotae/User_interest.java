@@ -57,31 +57,33 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
         String gender = data_recevie.getStringExtra("gender");
         String mobile = data_recevie.getStringExtra("mobile");
 
-        String place01, place02, place03, place04, restarant01, restarant02, restarant03, restarant04 = "";
+        String place01 = null, place02 = null, place03 = null, place04 = null,
+                restarant01 = null, restarant02 = null, restarant03 = null, restarant04 = null;
 
+        if (UI_check_place01.isChecked()) {
             place01 = UI_check_place01.getText().toString();
-
-
+        }
+        if (UI_check_place02.isChecked()) {
             place02 = UI_check_place02.getText().toString();
-
-
+        }
+        if (UI_check_place03.isChecked()) {
             place03 = UI_check_place03.getText().toString();
-
-
+        }
+        if (UI_check_place04.isChecked()) {
             place04 = UI_check_place04.getText().toString();
-
-
+        }
+        if (UI_check_restarant01.isChecked()) {
             restarant01 = UI_check_restarant01.getText().toString();
-
-
+        }
+        if (UI_check_restarant02.isChecked()) {
             restarant02 = UI_check_restarant02.getText().toString();
-
-
+        }
+        if (UI_check_restarant03.isChecked()) {
             restarant03 = UI_check_restarant03.getText().toString();
-
-
+        }
+        if (UI_check_restarant04.isChecked()) {
             restarant04 = UI_check_restarant04.getText().toString();
-
+        }
 
         Interest Interest = new Interest(place01, place02, place03, place04, restarant01, restarant02, restarant03, restarant04, name, gender, birthyear, mobile);
         db.collection("users").document(email).set(Interest)
@@ -89,7 +91,7 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
 
                     @Override
                     public void onSuccess(Void aVoid) {
-                        startToast("회원정보 등록을 성공하였습니다.");
+                        startToast("회원정보 등록을 완료하였습니다.");
                         Intent intent = new Intent(User_interest.this, User_interest.class);
                         startActivity(intent);
                     }

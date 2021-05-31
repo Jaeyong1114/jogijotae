@@ -127,7 +127,7 @@ public class FirstMain extends AppCompatActivity implements View.OnClickListener
                     Toast.makeText(mContext, "name : " + name + " email : " + email + " gender : " + gender + " birthyear : " + birthyear
                             + " mobile : " + mobile, Toast.LENGTH_LONG).show();
 
-                    Intent interestCheck = new Intent(FirstMain.this, Naver_information.class);
+                    Intent interestCheck = new Intent(FirstMain.this, User_interest.class);
                     interestCheck.putExtra("name", name);
                     interestCheck.putExtra("email", email);
                     interestCheck.putExtra("gender", gender);
