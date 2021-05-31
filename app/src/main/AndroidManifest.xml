@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".User_interest"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".User_interest_app" />
+        <activity android:name=".User_interest" />
         <activity android:name=".password_reset" />
         <activity android:name=".Naver_information" />
         <activity android:name=".RequestApiTask" />
