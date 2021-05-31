@@ -23,24 +23,10 @@ public class Naver_information extends AppCompatActivity {
     private static final String TAG = "naver_login";
     private FirebaseAuth mAuth;
 
-    EditText interest_editText;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.naver_information);
-
-       Intent data_recevie = getIntent();
-
-        String name = data_recevie.getStringExtra("name");
-        String email = data_recevie.getStringExtra("email");
-        String gender = data_recevie.getStringExtra("gender");
-        String birthyear = data_recevie.getStringExtra("birthyear");
-        String mobile = data_recevie.getStringExtra("mobile");
-
-        interest_editText = findViewById(R.id.interest_editText);
-
-        interest_editText.setText(name + "\n" + email + "\n" + gender + "\n" + birthyear + "\n" + mobile);
 
         profileUpdate();
     }
@@ -56,40 +42,37 @@ public class Naver_information extends AppCompatActivity {
         String birthyear = data_recevie.getStringExtra("birthyear");
         String mobile = data_recevie.getStringExtra("mobile");
 
-        if (name.length() >1 ) {
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-            naver_login naver_login= new naver_login(name,gender,birthyear,mobile);
 
-            if (user != null) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        naver_login naver_login = new naver_login(name, gender, birthyear, mobile);
 
-                db.collection("users").document(email).set(naver_login)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+        if (user != null) {
 
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                startToast("회원정보 등록을 성공하였습니다.");
-                                Intent intent = new Intent(Naver_information.this, User_interest.class);
-                                intent.putExtra("email", email);
-                                intent.putExtra("birthyear", birthyear);
-                                intent.putExtra("gender", gender);
-                                intent.putExtra("name", name);
-                                intent.putExtra("mobile", mobile);
-                                startActivity(intent);
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                startToast("회원정보 등록에 실패하였습니다.");
-                                Log.w(TAG, "Error writing document", e);
-                            }
-                        });
-            }
+            db.collection("users").document(email).set(naver_login)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
 
-        } else {
-            startToast("올바른 회원정보를 입력해 주세요.");
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            //startToast("회원정보 등록을 성공하였습니다.");
+                            Intent intent = new Intent(Naver_information.this, User_interest.class);
+                            intent.putExtra("email", email);
+                            intent.putExtra("birthyear", birthyear);
+                            intent.putExtra("gender", gender);
+                            intent.putExtra("name", name);
+                            intent.putExtra("mobile", mobile);
+                            startActivity(intent);
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            startToast("회원정보 등록에 실패하였습니다.");
+                            Log.w(TAG, "Error writing document", e);
+                        }
+                    });
         }
+
     }
 
     private void startToast(String msg){
