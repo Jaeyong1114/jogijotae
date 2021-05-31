@@ -1,7 +1,7 @@
 package com.examples.jogijotae;
 
 public class Interest {
-    String place01, place02, place03, place04;
+    String place01, place02, place03, place04, place05, place06;
     String restarant01, restarant02,restarant03, restarant04;
     String name;
     String gender;
@@ -74,6 +74,22 @@ public class Interest {
         this.place04 = place04;
     }
 
+    public String getplace05() {
+        return place05;
+    }
+
+    public void setPlace05(String place05) {
+        this.place05 = place05;
+    }
+
+    public String getplace06() {
+        return place06;
+    }
+
+    public void setplace06(String place06) {
+        this.place06 = place06;
+    }
+
     public String getrestarant01() {
         return restarant01;
     }
@@ -106,12 +122,14 @@ public class Interest {
         this.restarant04 = restarant04;
     }
 
-    public Interest(String place01, String place02, String place03, String place04, String restarant01, String restarant02, String restarant03, String restarant04,
+    public Interest(String place01, String place02, String place03, String place04, String place05, String place06, String restarant01, String restarant02, String restarant03, String restarant04,
                     String name,  String gender, String birthyear, String mobile ) {
         this.place01 = place01;
         this.place02 = place02;
         this.place03 = place03;
         this.place04 = place04;
+        this.place05 = place05;
+        this.place06 = place06;
         this.restarant01 = restarant01;
         this.restarant02 = restarant02;
         this.restarant03 = restarant03;

@@ -10,8 +10,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.nhn.android.naverlogin.OAuthLogin;
 import com.nhn.android.naverlogin.OAuthLoginHandler;
 
@@ -19,6 +27,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class FirstMain extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = "FirstMain";
+
     Button btn01,btn02,btn03;
 
     OAuthLogin mOAuthLoginModule;
@@ -124,22 +134,46 @@ public class FirstMain extends AppCompatActivity implements View.OnClickListener
                     String birthyear = response.getString("birthyear");
                     String mobile = response.getString("mobile");
 
-                    Toast.makeText(mContext, "name : " + name + " email : " + email + " gender : " + gender + " birthyear : " + birthyear
-                            + " mobile : " + mobile, Toast.LENGTH_LONG).show();
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    DocumentReference docRef = db.collection("users").document(email);
+                    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
 
-                    Intent interestCheck = new Intent(FirstMain.this, User_interest.class);
-                    interestCheck.putExtra("name", name);
-                    interestCheck.putExtra("email", email);
-                    interestCheck.putExtra("gender", gender);
-                    interestCheck.putExtra("birthyear", birthyear);
-                    interestCheck.putExtra("mobile", mobile);
-                    startActivity(interestCheck);
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot document = task.getResult();
+                                if (document != null) {
+                                    if (document.exists()) {
+                                        Log.d(TAG, "DocumentSnapshot data:" + document.getData());
+                                        Intent intent = new Intent(FirstMain.this, FirstMain.class);
+                                        startToast("로그인 완료.");
+                                        startActivity(intent);
+                                    } else {
+                                        Log.d(TAG, "No such document");
+                                        Intent interestCheck = new Intent(FirstMain.this, User_interest.class);
+                                        interestCheck.putExtra("name", name);
+                                        interestCheck.putExtra("email", email);
+                                        interestCheck.putExtra("gender", gender);
+                                        interestCheck.putExtra("birthyear", birthyear);
+                                        interestCheck.putExtra("mobile", mobile);
+                                        startActivity(interestCheck);
+                                    }
+                                } else {
+                                    Log.d(TAG, "get failed with", task.getException());
+                                }
+                            }
+                        }
+                    });
                 }
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
+        }
+    private void startToast(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    }
     }
 
-}
+
