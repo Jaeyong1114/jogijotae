@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                                                     if (document != null) {
                                                         if (document.exists()) {
                                                             Log.d(TAG, "DocumentSnapshot data:" + document.getData());
-                                                            Intent intent = new Intent(LoginActivity.this, User_interest.class);
+                                                            Intent intent = new Intent(LoginActivity.this,  MainActivity.class);
                                                             startActivity(intent);
                                                         } else {
                                                             Log.d(TAG, "No such document");

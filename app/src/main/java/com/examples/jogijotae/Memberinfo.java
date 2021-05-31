@@ -4,15 +4,15 @@ package com.examples.jogijotae;
 
 public class Memberinfo {
     private String birthyear;
-    private String phone;
+    private String mobile;
     private String gender;
     private String name;
 
 
-    public Memberinfo(String birthyear, String phone, String gender, String name){
+    public Memberinfo(String birthyear, String mobile, String gender, String name){
         this.birthyear = birthyear;
 
-        this.phone = phone;
+        this.mobile = mobile;
         this.gender = gender;
         this.name = name;
     }
@@ -27,11 +27,11 @@ public class Memberinfo {
 
 
     public String getphone(){
-        return this.phone;
+        return this.mobile;
 
     }
     public void setphone(String phone){
-        this.phone = phone;
+        this.mobile = mobile;
     }
 
 
