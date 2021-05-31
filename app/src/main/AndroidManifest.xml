@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Interestmain"></activity>
+        <activity android:name=".Categorymain" />
+        <activity android:name=".Restaurantmain" />
+        <activity android:name=".Placemain" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".User_interest_app" />
         <activity android:name=".User_interest" />
         <activity android:name=".password_reset" />
