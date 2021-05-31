@@ -52,7 +52,7 @@
         android:id="@+id/UI_check_place01"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="걷기좋은곳"
+        android:text="가족여행"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline1" />
@@ -61,7 +61,7 @@
         android:id="@+id/UI_check_place02"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="인스타용"
+        android:text="아이와여행"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/guideline1" />
@@ -70,7 +70,7 @@
         android:id="@+id/UI_check_place03"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="런닝"
+        android:text="친구와여행"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline1" />
@@ -79,7 +79,7 @@
         android:id="@+id/UI_check_place04"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="조깅"
+        android:text="혼자여행"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/guideline1" />
@@ -149,5 +149,23 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/UI_check_place05"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="걷기좋은곳"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UI_check_place01" />
+
+    <CheckBox
+        android:id="@+id/UI_check_place06"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="인스타용"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/UI_check_place02" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

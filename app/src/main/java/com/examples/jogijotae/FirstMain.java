@@ -146,7 +146,7 @@ public class FirstMain extends AppCompatActivity implements View.OnClickListener
                                 if (document != null) {
                                     if (document.exists()) {
                                         Log.d(TAG, "DocumentSnapshot data:" + document.getData());
-                                        Intent intent = new Intent(FirstMain.this, FirstMain.class);
+                                        Intent intent = new Intent(FirstMain.this, MainActivity.class);
                                         startToast("로그인 완료.");
                                         startActivity(intent);
                                     } else {
