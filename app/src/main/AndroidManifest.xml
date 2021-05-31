@@ -14,7 +14,6 @@
         android:theme="@style/Theme.MyApplication">
         <activity android:name=".User_interest"></activity>
         <activity android:name=".password_reset" />
-        <activity android:name=".Naver_information" />
         <activity android:name=".RequestApiTask" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".FirstMain">

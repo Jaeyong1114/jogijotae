@@ -21,7 +21,7 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
 
     private static final String TAG = "User_interest";
 
-    CheckBox UI_check_place01, UI_check_place02, UI_check_place03, UI_check_place04;
+    CheckBox UI_check_place01, UI_check_place02, UI_check_place03, UI_check_place04, UI_check_place05, UI_check_place06;
     CheckBox UI_check_restarant01, UI_check_restarant02, UI_check_restarant03, UI_check_restarant04;
     Button UI_btn;
 
@@ -34,6 +34,8 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
         UI_check_place02 = findViewById(R.id.UI_check_place02);
         UI_check_place03 = findViewById(R.id.UI_check_place03);
         UI_check_place04 = findViewById(R.id.UI_check_place04);
+        UI_check_place05 = findViewById(R.id.UI_check_place05);
+        UI_check_place06 = findViewById(R.id.UI_check_place06);
 
         UI_check_restarant01 = findViewById(R.id.UI_check_restarant01);
         UI_check_restarant02 = findViewById(R.id.UI_check_restarant02);
@@ -57,7 +59,7 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
         String gender = data_recevie.getStringExtra("gender");
         String mobile = data_recevie.getStringExtra("mobile");
 
-        String place01 = null, place02 = null, place03 = null, place04 = null,
+        String place01 = null, place02 = null, place03 = null, place04 = null, place05 = null, place06 = null,
                 restarant01 = null, restarant02 = null, restarant03 = null, restarant04 = null;
 
         if (UI_check_place01.isChecked()) {
@@ -72,6 +74,12 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
         if (UI_check_place04.isChecked()) {
             place04 = UI_check_place04.getText().toString();
         }
+        if (UI_check_place05.isChecked()) {
+            place05 = UI_check_place05.getText().toString();
+        }
+        if (UI_check_place06.isChecked()) {
+            place06 = UI_check_place06.getText().toString();
+        }
         if (UI_check_restarant01.isChecked()) {
             restarant01 = UI_check_restarant01.getText().toString();
         }
@@ -85,7 +93,7 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
             restarant04 = UI_check_restarant04.getText().toString();
         }
 
-        Interest Interest = new Interest(place01, place02, place03, place04, restarant01, restarant02, restarant03, restarant04, name, gender, birthyear, mobile);
+        Interest Interest = new Interest(place01, place02, place03, place04, place05, place06, restarant01, restarant02, restarant03, restarant04, name, gender, birthyear, mobile);
         db.collection("users").document(email).set(Interest)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
 
