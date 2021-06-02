@@ -49,6 +49,7 @@ public class User_interest_app extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -60,8 +61,12 @@ public class User_interest_app extends AppCompatActivity implements View.OnClick
         String gender = data_receive.getStringExtra("gender");
         String mobile = data_receive.getStringExtra("mobile");
 
+
+
         String place01 = null, place02 = null, place03 = null, place04 = null,place05 = null, place06 = null,
                 restarant01 = null, restarant02 = null, restarant03 = null, restarant04 = null;
+
+
 
         if (UI_check_place01.isChecked()) {
             place01 = UI_check_place01.getText().toString();
@@ -96,6 +101,8 @@ public class User_interest_app extends AppCompatActivity implements View.OnClick
         if (UI_check_restarant04.isChecked()) {
             restarant04 = UI_check_restarant04.getText().toString();
         }
+
+
 
         Interest Interest = new Interest(place01, place02, place03, place04,place05,place06, restarant01, restarant02, restarant03, restarant04, name, gender, birthyear, mobile);
         db.collection("users").document(user.getEmail()).set(Interest)

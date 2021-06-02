@@ -65,27 +65,33 @@ public class Userinformation extends AppCompatActivity {
     };
 
     public void profileUpdate() {
+
+
         String birthyear = ((EditText) findViewById(R.id.birth_editText)).getText().toString();
         String mobile = ((EditText) findViewById(R.id.phone_editText)).getText().toString();
         String gender = str_result;
         String name = ((EditText) findViewById(R.id.name_editText)).getText().toString();
+        if (name.length() > 0 && birthyear.length() > 3 && birthyear.length() < 5 && mobile.length()> 12 && mobile.length() < 14) {
 
-
-        Intent interestCheck2 = new Intent(Userinformation.this, User_interest_app.class);
-        interestCheck2.putExtra("name", name);
-        interestCheck2.putExtra("gender", gender);
-        interestCheck2.putExtra("birthyear", birthyear);
-        interestCheck2.putExtra("mobile", mobile);
-        startActivity(interestCheck2);
-
-
-
+            Intent interestCheck2 = new Intent(Userinformation.this, User_interest_app.class);
+            interestCheck2.putExtra("name", name);
+            interestCheck2.putExtra("gender", gender);
+            interestCheck2.putExtra("birthyear", birthyear);
+            interestCheck2.putExtra("mobile", mobile);
+            startActivity(interestCheck2);
 
 
         }
+else{
+    startToast("회원정보를 입력해주세요");
 
+        }
 
     }
+    private void startToast(String msg){
+        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
+    }
+}
 
 
 
