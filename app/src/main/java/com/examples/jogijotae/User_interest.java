@@ -101,6 +101,7 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
                     public void onSuccess(Void aVoid) {
                         startToast("회원정보 등록을 완료하였습니다.");
                         Intent intent = new Intent(User_interest.this, MainActivity.class);
+                        intent.putExtra("email", email);
                         startActivity(intent);
                     }
                 })

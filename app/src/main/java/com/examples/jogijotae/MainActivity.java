@@ -43,10 +43,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             if(v.getId()==R.id.res_btn) {
+                Intent data_recevie = getIntent();
+                String email = data_recevie.getStringExtra("email");
                 Intent intent01 = new Intent(this, Restaurantmain.class);
+                intent01.putExtra("email", email);
                 startActivity(intent01);
-
-
             }
         if(v.getId()==R.id.category_btn) {
             Intent intent01 = new Intent(this, Categorymain.class);
