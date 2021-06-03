@@ -3,8 +3,11 @@ package com.examples.jogijotae;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -24,13 +27,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Placemain extends AppCompatActivity {
-
+public class Placemain extends AppCompatActivity implements AdapterView.OnItemClickListener{
+    int i = 0;
     //EditText text01;
     private ListView list;
+    private   List<String> data =new ArrayList<>();
     private static final String TAG = "Placemain";
     // ArrayList<String> divi;
-
+    String[] newposition = new String[50];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -39,12 +43,11 @@ public class Placemain extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_placemain);
-        list =findViewById(R.id.listview);
-        List<String> data =new ArrayList<>();
-
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,data);
-        list.setAdapter(adapter);
+        list =findViewById(R.id.listview);
 
+        list.setAdapter(adapter);
+        list.setOnItemClickListener(this);
 
 
         //text01 = findViewById(R.id.restaurantmain_text);
@@ -68,6 +71,7 @@ public class Placemain extends AppCompatActivity {
 
                                 if (document.getString("division").equals("P")) {
                                     data.add (document.getString("name"));
+                                    newposition[i++]=document.getString("position");
                                     adapter.notifyDataSetChanged();
                                 }
                             }
@@ -86,5 +90,17 @@ public class Placemain extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        String[] position2 = new String[50];
+        position2[position] = newposition[position];
+
+        Log.d(TAG,"테스트2"+newposition[position]);
+        Intent intent01 = new Intent(Placemain.this,Place_detail.class);
+        intent01.putExtra("position",newposition[position]);
+        startActivity(intent01);
     }
 }

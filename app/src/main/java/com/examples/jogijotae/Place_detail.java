@@ -17,16 +17,16 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-public class Restaurant_detail extends AppCompatActivity {
-    private static final String TAG = "Restaurant_detail";
-    EditText res_detail;
+public class Place_detail extends AppCompatActivity {
+    private static final String TAG = "Place_detail";
+    EditText place_detail;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restaurant_detail);
-        res_detail=findViewById(R.id.resdetail_text);
+        setContentView(R.layout.activity_place_detail);
+        place_detail=findViewById(R.id.placedetail_text);
 
 
 
@@ -53,13 +53,11 @@ public class Restaurant_detail extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
 
-                               /* if ((document.getString("category").equals("한식"))  ||(document.getString("category2").equals("가족여행"))
-                                ||document.getString("category3").equals("가족여행")){*/
-                               if (document.getString("position").equals(""+position+"")   ){
 
+                                if (document.getString("position").equals(""+position+"")) {
 
-                                    res_detail.append(document.getString("name")+"\n");
-                                    res_detail.append(document.getString("ex")+"\n");
+                                    place_detail.append(document.getString("name")+"\n");
+                                    place_detail.append(document.getString("ex")+"\n");
 
                                 }
                             }

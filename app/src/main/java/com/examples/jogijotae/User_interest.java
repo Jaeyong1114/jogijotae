@@ -100,7 +100,7 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onSuccess(Void aVoid) {
                         startToast("회원정보 등록을 완료하였습니다.");
-                        Intent intent = new Intent(User_interest.this, User_interest.class);
+                        Intent intent = new Intent(User_interest.this, MainActivity.class);
                         startActivity(intent);
                     }
                 })
