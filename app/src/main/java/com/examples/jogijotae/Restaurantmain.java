@@ -35,7 +35,7 @@ import java.util.List;
 
 public class Restaurantmain extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
-    //EditText text01;
+    //EditText text01;....
     private ListView list;
     private TextView textview1;
     private TextView textview2;
