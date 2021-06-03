@@ -79,7 +79,7 @@ public class Userinformation extends AppCompatActivity {
             interestCheck2.putExtra("birthyear", birthyear);
             interestCheck2.putExtra("mobile", mobile);
             startActivity(interestCheck2);
-
+            finish();
 
         }
 else{

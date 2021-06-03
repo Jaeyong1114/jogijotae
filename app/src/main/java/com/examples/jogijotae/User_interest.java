@@ -103,6 +103,7 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
                         Intent intent = new Intent(User_interest.this, MainActivity.class);
                         intent.putExtra("email", email);
                         startActivity(intent);
+                        finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

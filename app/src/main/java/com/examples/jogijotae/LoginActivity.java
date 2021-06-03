@@ -51,7 +51,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //intent함수를 통해 register액티비티 함수를 호출한다.
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-
             }
         });
 
@@ -84,6 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                                     if (user == null) {
                                         Intent intent = new Intent(LoginActivity.this, Userinformation.class);
                                         startActivity(intent);
+                                        finish();
                                     } else {
                                         FirebaseFirestore db = FirebaseFirestore.getInstance();
                                         DocumentReference docRef = db.collection("users").document(user.getEmail());
@@ -97,10 +97,12 @@ public class LoginActivity extends AppCompatActivity {
                                                             Log.d(TAG, "DocumentSnapshot data:" + document.getData());
                                                             Intent intent = new Intent(LoginActivity.this,  MainActivity.class);
                                                             startActivity(intent);
+                                                            finish();
                                                         } else {
                                                             Log.d(TAG, "No such document");
                                                             Intent intent = new Intent(LoginActivity.this, Userinformation.class);
                                                             startActivity(intent);
+                                                            finish();
                                                         }
                                                     }
                                                 } else {
