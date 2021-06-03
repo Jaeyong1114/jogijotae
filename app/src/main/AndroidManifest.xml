@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".Interestmain"></activity>
+        <activity android:name=".Restaurant_detail"></activity>
+        <activity android:name=".Interestmain" />
         <activity android:name=".Categorymain" />
         <activity android:name=".Restaurantmain" />
         <activity android:name=".Placemain" />
