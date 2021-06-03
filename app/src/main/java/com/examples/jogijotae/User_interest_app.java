@@ -113,6 +113,7 @@ public class User_interest_app extends AppCompatActivity implements View.OnClick
                         startToast("회원정보 등록을 완료하였습니다.");
                         Intent intent = new Intent(User_interest_app.this, MainActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

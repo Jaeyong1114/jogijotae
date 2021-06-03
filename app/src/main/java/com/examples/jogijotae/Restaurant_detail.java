@@ -28,16 +28,8 @@ public class Restaurant_detail extends AppCompatActivity {
         setContentView(R.layout.activity_restaurant_detail);
         res_detail=findViewById(R.id.resdetail_text);
 
-
-
-
-
-
-
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
 
         db.collection("Place")
                 .get()
