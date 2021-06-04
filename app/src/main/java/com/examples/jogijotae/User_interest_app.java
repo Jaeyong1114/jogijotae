@@ -62,7 +62,6 @@ public class User_interest_app extends AppCompatActivity implements View.OnClick
         String mobile = data_receive.getStringExtra("mobile");
 
 
-
         String place01 = null, place02 = null, place03 = null, place04 = null,place05 = null, place06 = null,
                 restarant01 = null, restarant02 = null, restarant03 = null, restarant04 = null;
 
@@ -104,7 +103,7 @@ public class User_interest_app extends AppCompatActivity implements View.OnClick
 
 
 
-        Interest Interest = new Interest(place01, place02, place03, place04,place05,place06, restarant01, restarant02, restarant03, restarant04, name, gender, birthyear, mobile);
+        Interest Interest = new Interest(place01, place02, place03, place04,place05,place06, restarant01, restarant02, restarant03, restarant04, name, gender, birthyear, mobile, email);
         db.collection("users").document(user.getEmail()).set(Interest)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
 
