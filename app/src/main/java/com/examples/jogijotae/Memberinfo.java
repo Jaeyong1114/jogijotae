@@ -3,19 +3,35 @@ package com.examples.jogijotae;
 
 
 public class Memberinfo {
+    private String email;
     private String birthyear;
     private String mobile;
     private String gender;
     private String name;
 
 
-    public Memberinfo(String birthyear, String mobile, String gender, String name){
+    public Memberinfo(String email,String birthyear, String mobile, String gender, String name){
+      this.email = email;
         this.birthyear = birthyear;
 
         this.mobile = mobile;
         this.gender = gender;
         this.name = name;
     }
+
+    public String getemail(){
+        return this.email;
+
+    }
+    public void setemail(String email){
+        this.email = email;
+    }
+
+
+
+
+
+
     public String getbirthyear(){
         return this.birthyear;
 

@@ -93,7 +93,7 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
             restarant04 = UI_check_restarant04.getText().toString();
         }
 
-        Interest Interest = new Interest(place01, place02, place03, place04, place05, place06, restarant01, restarant02, restarant03, restarant04, name, gender, birthyear, mobile);
+        Interest Interest = new Interest(place01, place02, place03, place04, place05, place06, restarant01, restarant02, restarant03, restarant04, name, gender, birthyear, mobile,email);
         db.collection("users").document(email).set(Interest)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
 

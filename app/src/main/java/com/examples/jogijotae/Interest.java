@@ -7,6 +7,7 @@ public class Interest {
     String gender;
     String birthyear;
     String mobile;
+    String email;
 
     public Interest() {}
 
@@ -16,6 +17,15 @@ public class Interest {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    public String getemail() {
+        return email;
+    }
+
+    public void setemail(String email) {
+        this.email= email;
     }
 
     public String getGender() {
@@ -123,7 +133,7 @@ public class Interest {
     }
 
     public Interest(String place01, String place02, String place03, String place04, String place05, String place06, String restarant01, String restarant02, String restarant03, String restarant04,
-                    String name,  String gender, String birthyear, String mobile ) {
+                    String name,  String gender, String birthyear, String mobile,String email ) {
         this.place01 = place01;
         this.place02 = place02;
         this.place03 = place03;
@@ -138,6 +148,7 @@ public class Interest {
         this.gender = gender;
         this.birthyear = birthyear;
         this.mobile = mobile;
+        this.email = email;
     }
 
 }
