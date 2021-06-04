@@ -21,7 +21,7 @@ public class Categorymain extends AppCompatActivity implements View.OnClickListe
 
     TextView resinterest_text1, resinterest_text2, resinterest_text3, resinterest_text4;
     TextView placeinterest_text1, placeinterest_text2, placeinterest_text3, placeinterest_text4;
-    TextView placeinterest2_text1,placeinterest2_text2;
+    TextView placeinterest2_text1,placeinterest2_text2, gps_category_text;
 private static final String TAG = Categorymain.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,7 @@ private static final String TAG = Categorymain.class.getSimpleName();
         placeinterest_text4=findViewById(R.id.placeinterest_text4);
         placeinterest2_text1=findViewById(R.id.placeinterest2_text1);
         placeinterest2_text2=findViewById(R.id.placeinterest2_text2);
+        gps_category_text=findViewById(R.id.gps_category_text);
 
         resinterest_text1.setOnClickListener(this);
         resinterest_text2.setOnClickListener(this);
@@ -53,7 +54,7 @@ private static final String TAG = Categorymain.class.getSimpleName();
         placeinterest2_text1.setOnClickListener(this);
         placeinterest2_text2.setOnClickListener(this);
 
-
+        gps_category_text.setOnClickListener(this);
 
 
 
@@ -150,5 +151,13 @@ String k = "한식";
             intent01.putExtra("k",k);
             startActivity(intent01);
         }
+
+        if(v.getId()==R.id.gps_category_text) {
+
+
+            Intent intent01 = new Intent(Categorymain.this, Category_detail3.class);
+            startActivity(intent01);
+        }
+
     }
 }
