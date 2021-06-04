@@ -16,6 +16,9 @@
         android:theme="@style/Theme.MyApplication">
         <activity android:name=".SplashActivity"></activity>
         <activity android:name=".Category_detail2" />
+        <activity android:name=".Interest_place_detail"></activity>
+        <activity android:name=".Interest_place" />
+        <activity android:name=".Category_detail2" />
         <activity android:name=".Category_detail" />
         <activity android:name=".Place_detail" />
         <activity android:name=".Restaurant_detail" />
@@ -27,6 +30,7 @@
         <activity android:name=".User_interest_app" />
         <activity android:name=".User_interest" />
         <activity android:name=".password_reset" />
+        <activity android:name=".RequestApiTask" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".FirstMain">
             <intent-filter>

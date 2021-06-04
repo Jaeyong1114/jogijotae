@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -16,18 +16,19 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-public class Category_detail2 extends AppCompatActivity {
-    EditText category_detailtext;
-    private static final String TAG = "Category_detail2";
+public class Interest_place_detail extends AppCompatActivity {
+    private static final String TAG = "Interest_place_detail";
+    TextView interestplacedetail_text;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category_detail2);
-        category_detailtext=findViewById(R.id.interestplacedetail_text);
+        setContentView(R.layout.activity_interest_place_detail);
+
+        interestplacedetail_text = findViewById(R.id.interestplacedetail_text);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
 
         db.collection("Place")
                 .get()
@@ -35,10 +36,8 @@ public class Category_detail2 extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         Intent data_receive = getIntent();
-                      //  int position = data_receive.getIntExtra("position",1);
                         String position = data_receive.getStringExtra("position");
-                        Log.d(TAG,"이거는"+position);
-
+                        Log.d(TAG, "이거는" + position);
 
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
@@ -46,30 +45,18 @@ public class Category_detail2 extends AppCompatActivity {
 
                                /* if ((document.getString("category").equals("한식"))  ||(document.getString("category2").equals("가족여행"))
                                 ||document.getString("category3").equals("가족여행")){*/
-                                if (document.getString("position").equals(""+position+"")   ){
-
-
-                                    category_detailtext.append(document.getString("name")+"\n");
-                                    category_detailtext.append(document.getString("ex")+"\n");
+                                if (document.getString("position").equals("" + position + "")) {
+                                    interestplacedetail_text.append(document.getString("name") + "\n");
+                                    interestplacedetail_text.append(document.getString("ex") + "\n");
 
                                 }
                             }
-
-
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
-
-
                     }
                 });
 
-
     }
 
-
-
-
-
 }
-

@@ -40,13 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent01 = new Intent(this, Placemain.class);
             startActivity(intent01);
         }
-
-
-            if(v.getId()==R.id.res_btn) {
-                Intent data_recevie = getIntent();
-                String email = data_recevie.getStringExtra("email");
+        if(v.getId()==R.id.res_btn) {
                 Intent intent01 = new Intent(this, Restaurantmain.class);
-                intent01.putExtra("email", email);
                 startActivity(intent01);
             }
         if(v.getId()==R.id.category_btn) {
@@ -55,10 +50,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
         if(v.getId()==R.id.interest_btn){
-            Intent intent01 = new Intent(this,Interestmain.class);
+            Intent data_recevie = getIntent();
+            String email = data_recevie.getStringExtra("email");
+            Intent intent01 = new Intent(this, Interestmain.class);
+            intent01.putExtra("email", email);
             startActivity(intent01);
-
-
         }
 
     }
