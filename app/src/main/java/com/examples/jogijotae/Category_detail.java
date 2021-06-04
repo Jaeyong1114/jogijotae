@@ -34,6 +34,7 @@ int i = 0;
     private static final String TAG = "Category_detail";
     // ArrayList<String> divi;
 String[] newposition = new String[50];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -79,6 +80,7 @@ String[] newposition = new String[50];
 
 
                                     adapter.notifyDataSetChanged();
+
                                 }
                             }
 

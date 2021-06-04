@@ -16,14 +16,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-public class Category_detail2 extends AppCompatActivity {
-    EditText category_detailtext;
-    private static final String TAG = "Category_detail2";
+public class Category_detail4 extends AppCompatActivity {
+    EditText gps_detailtext;
+    private static final String TAG = "Category_detail4";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category_detail2);
-        category_detailtext=findViewById(R.id.interestplacedetail_text);
+        setContentView(R.layout.activity_category_detail4);
+        gps_detailtext=findViewById(R.id.gpsdetail_text);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -35,9 +35,9 @@ public class Category_detail2 extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         Intent data_receive = getIntent();
-                      //  int position = data_receive.getIntExtra("position",1);
+                        //  int position = data_receive.getIntExtra("position",1);
                         String position = data_receive.getStringExtra("position");
-                        Log.d(TAG,"이거는"+position);
+
 
 
                         if (task.isSuccessful()) {
@@ -49,10 +49,10 @@ public class Category_detail2 extends AppCompatActivity {
                                 if (document.getString("position").equals(""+position+"")   ){
 
 
-                                    category_detailtext.append("이름:  "+document.getString("name")+"\n\n");
-                                    category_detailtext.append("주소:  "+document.getString("address")+"\n\n");
-                                    category_detailtext.append("전화번호:  "+document.getString("phone")+"\n\n");
-                                    category_detailtext.append("소개:  "+document.getString("ex")+"\n")
+                                    gps_detailtext.append("이름:  "+document.getString("name")+"\n\n");
+                                    gps_detailtext.append("주소:  "+document.getString("address")+"\n\n");
+                                    gps_detailtext.append("전화번호:  "+document.getString("phone")+"\n\n");
+                                    gps_detailtext.append("소개:  "+document.getString("ex")+"\n")
                                     ;
 
                                 }

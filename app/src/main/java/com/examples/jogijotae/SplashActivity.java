@@ -157,7 +157,9 @@ public class SplashActivity extends AppCompatActivity {
             latitude = locationResult.getLastLocation().getLatitude();
             fusedLocationProviderClient.removeLocationUpdates(locationCallback);
 
+
             Intent intent = new Intent(SplashActivity.this, Category_detail3.class);
+
             intent.putExtra("latitude", latitude);
             intent.putExtra("longitude", longitude);
             startActivity(intent);

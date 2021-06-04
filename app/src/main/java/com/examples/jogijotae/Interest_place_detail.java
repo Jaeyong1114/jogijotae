@@ -46,9 +46,11 @@ public class Interest_place_detail extends AppCompatActivity {
                                /* if ((document.getString("category").equals("한식"))  ||(document.getString("category2").equals("가족여행"))
                                 ||document.getString("category3").equals("가족여행")){*/
                                 if (document.getString("position").equals("" + position + "")) {
-                                    interestplacedetail_text.append(document.getString("name") + "\n");
-                                    interestplacedetail_text.append(document.getString("ex") + "\n");
-
+                                    interestplacedetail_text.append("이름:  "+document.getString("name")+"\n\n");
+                                    interestplacedetail_text.append("주소:  "+document.getString("address")+"\n\n");
+                                    interestplacedetail_text.append("전화번호:  "+document.getString("phone")+"\n\n");
+                                    interestplacedetail_text.append("소개:  "+document.getString("ex")+"\n")
+                                    ;
                                 }
                             }
                         } else {

@@ -56,9 +56,11 @@ public class Place_detail extends AppCompatActivity {
 
                                 if (document.getString("position").equals(""+position+"")) {
 
-                                    place_detail.append(document.getString("name")+"\n");
-                                    place_detail.append(document.getString("ex")+"\n");
-
+                                    place_detail.append("이름:  "+document.getString("name")+"\n\n");
+                                    place_detail.append("주소:  "+document.getString("address")+"\n\n");
+                                    place_detail.append("전화번호:  "+document.getString("phone")+"\n\n");
+                                    place_detail.append("소개:  "+document.getString("ex")+"\n")
+                                    ;
                                 }
                             }
 
