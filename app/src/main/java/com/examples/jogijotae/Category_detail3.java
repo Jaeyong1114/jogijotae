@@ -194,7 +194,7 @@ Log.d(TAG,"새포지션 "+ POJOclass.getPosition());
 
 
     }
-
+//g
 
 
 
