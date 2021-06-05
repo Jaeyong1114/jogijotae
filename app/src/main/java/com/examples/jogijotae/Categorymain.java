@@ -158,11 +158,14 @@ String k = "한식";
 
 
             Intent intent01 = new Intent(Categorymain.this, SplashActivity.class);
+            intent01.putExtra("1","맛집");
             startActivity(intent01);
         }
 
         if(v.getId()==R.id.gps_category_text2) {
-
+           /* Intent intent01 = new Intent(Categorymain.this, SplashActivity.class);
+            intent01.putExtra("2","관광지");
+            startActivity(intent01);*/
 
         }
 
