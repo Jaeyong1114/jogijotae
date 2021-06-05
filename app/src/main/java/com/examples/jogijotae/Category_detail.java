@@ -41,6 +41,11 @@ String[] newposition = new String[50];
 
 
 
+
+
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_detail);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,data);
@@ -48,6 +53,12 @@ String[] newposition = new String[50];
 
         list.setAdapter(adapter);
         list.setOnItemClickListener(this);
+
+
+
+
+
+
 
 
         //text01 = findViewById(R.id.restaurantmain_text);

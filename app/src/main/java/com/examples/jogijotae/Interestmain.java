@@ -30,6 +30,9 @@ public class Interestmain extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.interest_btn_place)
         {
             Intent data_recevie = getIntent();
+            Intent intent01 = getIntent();
+            double latitude = intent01.getDoubleExtra("latitude", 0);
+            double longitude = intent01.getDoubleExtra("longitude", 0);
             String place01 = data_recevie.getStringExtra("place01");
             String place02 = data_recevie.getStringExtra("place02");
             String place03 = data_recevie.getStringExtra("place03");
@@ -41,6 +44,8 @@ public class Interestmain extends AppCompatActivity implements View.OnClickListe
 
 
             Intent interest_place = new Intent(Interestmain.this, Interest_place.class);
+            interest_place.putExtra("latitude", latitude);
+            interest_place.putExtra("longitude", longitude);
             interest_place.putExtra("place01", place01);
             interest_place.putExtra("place02", place02);
             interest_place.putExtra("place03", place03);
@@ -53,6 +58,9 @@ public class Interestmain extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.interest_btn_res)
         {
             Intent data_recevie = getIntent();
+            Intent intent01 = getIntent();
+            double latitude = intent01.getDoubleExtra("latitude", 0);
+            double longitude = intent01.getDoubleExtra("longitude", 0);
             String restarant01 = data_recevie.getStringExtra("restarant01");
             String restarant02 = data_recevie.getStringExtra("restarant02");
             String restarant03 = data_recevie.getStringExtra("restarant03");
@@ -62,6 +70,8 @@ public class Interestmain extends AppCompatActivity implements View.OnClickListe
 
 
             Intent interest_res = new Intent(Interestmain.this, Interest_restarant.class);
+            interest_res.putExtra("latitude", latitude);
+            interest_res.putExtra("longitude", longitude);
             interest_res.putExtra("restarant01", restarant01);
             interest_res.putExtra("restarant02", restarant02);
             interest_res.putExtra("restarant03", restarant03);

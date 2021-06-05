@@ -65,6 +65,9 @@ public class Userinformation extends AppCompatActivity {
     };
 
     public void profileUpdate() {
+        Intent intent01 = getIntent();
+        double latitude = intent01.getDoubleExtra("latitude", 0);
+        double longitude = intent01.getDoubleExtra("longitude", 0);
 
 
         String birthyear = ((EditText) findViewById(R.id.birth_editText)).getText().toString();
@@ -74,6 +77,8 @@ public class Userinformation extends AppCompatActivity {
         if (name.length() > 0 && birthyear.length() > 3 && birthyear.length() < 5 && mobile.length()> 12 && mobile.length() < 14) {
 
             Intent interestCheck2 = new Intent(Userinformation.this, User_interest_app.class);
+            interestCheck2.putExtra("latitude", latitude);
+            interestCheck2.putExtra("longitude", longitude);
             interestCheck2.putExtra("name", name);
             interestCheck2.putExtra("gender", gender);
             interestCheck2.putExtra("birthyear", birthyear);

@@ -1,62 +1,42 @@
+
+
 package com.examples.jogijotae;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
+import java.text.Collator;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-          /*             구현중         */
-public class Category_detail5 extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class Category_detail5 extends AppCompatActivity {
 
-    String[] directionlati = new String[50];
-    String[] directionlongi = new String[50];
-    String[] newposition = new String[50];
+    private static final String TAG ="Category_detail5";
 
-    String newenewposition[];
-
-
+    RecyclerView recyclerView;
+    LinearLayoutManager linearLayoutManager;
+    //RecyclerViewAdapter class
+    RecyclerViewAdapter recyclerViewAdapter;
 
 
 
+    private final static Comparator<Person> sortByTotalCall = new Comparator<Person>() {
+
+        @Override
+        public int compare(Person object1, Person object2){
+            return Double.compare(object1.direction, object2.direction);
+        }
 
 
-
-
-
-    private ListView list;
-
-
-
-    private List<String> data =new ArrayList<>();
-    private static final String TAG = "Category_detail5";
-
-
-    int i=0; int y=0; int f=0;
-
-
+    };
 
 
 
@@ -87,25 +67,29 @@ public class Category_detail5 extends AppCompatActivity implements AdapterView.O
 
 
 
+    //change
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_category_test);
 
-        setContentView(R.layout.activity_category_detail5);
+        //activity_main.xml의 recyclerview id
+        recyclerView = findViewById(R.id.recyclerView);
+        linearLayoutManager = new LinearLayoutManager(this);
 
+        //recyclerview 항목들 사이에 구분선 추가
+        //수평, 수직의 스크롤 리스트 / getOrientation을 이용하여 스크롤 방향 설정
+        recyclerView.addItemDecoration(
+                new DividerItemDecoration(this, linearLayoutManager.getOrientation()));
 
+        //지정된 레이아웃매니저를 RecyclerView에 Set
+        recyclerView.setLayoutManager(linearLayoutManager);
 
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,data);
-        list =findViewById(R.id.listview);
-        list.setAdapter(adapter);
-
-        list.setOnItemClickListener(this);
-
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
 
         Intent intent = getIntent();
@@ -115,108 +99,30 @@ public class Category_detail5 extends AppCompatActivity implements AdapterView.O
 
 
 
-        db.collection("Place")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+        Log.d(TAG,"내위치는"+latitude+","+longitude);
+        // ArrayList에 person 객체(이름과 번호) 넣기
+        List<Person> person = new ArrayList<>();
+        person.add(new Person("롯데월드", distance(latitude,longitude,37.511239,127.0958334),37.511239,127.0958334));
+        person.add(new Person("잠실 한강공원", distance(latitude,longitude,37.51126,127.0892405),37.51126,127.0892405));
+        person.add(new Person("석촌호수", distance(latitude,longitude,37.5080243,127.0918423),37.5080243,127.0918423));
+        person.add(new Person("제2 롯데타워", distance(latitude,longitude,37.5233607,127.0916439),37.5233607,127.0916439));
+        person.add(new Person("키자니아", distance(latitude,longitude,37.510873,127.0942724),37.510873,127.0942724));
+        person.add(new Person("롯데월드 아쿠아리움", distance(latitude,longitude,37.5108815,127.0942616),37.5108815,127.0942616));
+        person.add(new Person("삼전도비", distance(latitude,longitude,37.50923323071838,127.0991518687846),37.50923323071838,127.0991518687846));
+        person.add(new Person("서울올림픽기념관점", distance(latitude,longitude,37.52031527829416,127.11557246926829),37.52031527829416,127.11557246926829));
+        person.add(new Person("아시아공원", distance(latitude,longitude,37.51015409975009,127.07676126714965),37.51015409975009,127.07676126714965));
+        person.add(new Person("올림픽공원", distance(latitude,longitude,37.52089250985871,127.12160148713528),37.52089250985871,127.12160148713528));
+        person.add(new Person("평화의광장", distance(latitude,longitude,37.51887978173245,127.11688305744877),37.51887978173245,127.11688305744877));
+        person.add(new Person("한양공원", distance(latitude,longitude,37.50409106940423,127.11552103919591),37.50409106940423,127.11552103919591));
 
 
 
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                if ((document.getString("division").equals("P"))) {
-
-/*
-                                    String placelongi = directionlongi[i];
-                                    String placelati = directionlati[i];
-
-*/
-                                    directionlati[i++] = document.getString("lati");
-                                    directionlongi[y++] = document.getString("longi");
+        Collections.sort(person,sortByTotalCall);
 
 
-                                    int i=Integer.parseInt(document.getString("position"));
-//int형변환
-
-                                    newposition[i] = document.getString("position");
-
-
-                                    String placelongi = directionlongi[i];
-                                    String placelati = directionlati[i];
-
-                                    double newplacelati = Double.parseDouble(placelati);
-                                    double newplacelongi = Double.parseDouble(placelongi);
-                                    // Log.d(TAG,"더블형변환"+newplacelongi);
-
-                                    //   Log.d(TAG ,"경로테스트"+directionlati[i]+","+directionlongi[i]);
-
-                                    Log.d(TAG,"계산식"+distance(latitude, longitude,newplacelati,newplacelongi));
-
-                                    //location.append(""+distance(latitude, longitude,newplacelati,newplacelongi) + "\n");
-
-                                    int newdistance = Integer.parseInt(String.valueOf(Math.round(distance(latitude, longitude,newplacelati,newplacelongi))));
-                                    // String newdistance2 = String.valueOf(newdistance);
-
-
-                                    Collections.sort(data);
-                                    //정렬
-
-
-
-                                    POJOclass POJOclass = new POJOclass(document.getString("name"),document.getString("lati"),document.getString("longi"),newdistance,document.getString("position"));//name,lati,longi,distance,position
-                                    Log.d(TAG,"테스트해볼겡용"+POJOclass.toString());
-
-
-                                    data.add(POJOclass.getDistance()+"km\n"+POJOclass.getName());
-
-
-                                    //  newenewposition[f] = POJOclass.getPosition();
-                                    Log.d(TAG,"뉴뉴포지션"+newenewposition);
-
-
-                                    Log.d(TAG,"새포지션 "+ POJOclass.getPosition());
-                                    //거리순 리스트뷰 정렬
-
-                                    adapter.notifyDataSetChanged();
-
-                                }
-
-                            }
-
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
-
-                        Log.d(TAG,"현재 내위치"+latitude+","+longitude);
-                    }
-                });
-
+        // Adapter생성
+        recyclerViewAdapter = new RecyclerViewAdapter(this, person);
+        recyclerView.setAdapter(recyclerViewAdapter);
 
     }
-
-
-
-
-
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
-        String[] position2 = new String[50];
-        position2[position] = newposition[position];
-
-
-        Log.d(TAG,"포지션테스트"+newposition[position]);
-        Intent intent01 = new Intent(Category_detail5.this,Category_detail4.class);
-        intent01.putExtra("position",newposition[position]);
-        startActivity(intent01);
-
-    }
-
-
-
 }
-

@@ -101,7 +101,12 @@ public class RegisterActivity extends AppCompatActivity  {
 
 
                                 //가입이 이루어져을시 가입 화면을 빠져나감.
+                                Intent intent02 = getIntent();
+                                double latitude = intent02.getDoubleExtra("latitude", 0);
+                                double longitude = intent02.getDoubleExtra("longitude", 0);
                                 Intent intent01 = new Intent(RegisterActivity.this, Userinformation.class);
+                                intent01.putExtra("latitude", latitude);
+                                intent01.putExtra("longitude", longitude);
                                 startActivity(intent01);
                                 finish();
                                 Toast.makeText(RegisterActivity.this, "회원가입에 성공하셨습니다.", Toast.LENGTH_SHORT).show();

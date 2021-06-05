@@ -156,33 +156,18 @@ public class SplashActivity extends AppCompatActivity {
             longitude = locationResult.getLastLocation().getLongitude();
             latitude = locationResult.getLastLocation().getLatitude();
             fusedLocationProviderClient.removeLocationUpdates(locationCallback);
-String res=""; String place="";
-Intent data_receive =getIntent();
- res= data_receive.getStringExtra("1");
- place= data_receive.getStringExtra("2");
-Log.d(TAG,"레스"+res+"플레이스"+place);
 
-            if(res.equals("맛집")){
-                Intent intent = new Intent(SplashActivity.this, Category_detail3.class);
+
+                Intent intent = new Intent(SplashActivity.this, FirstMain.class);
 
                 intent.putExtra("latitude", latitude);
                 intent.putExtra("longitude", longitude);
                 startActivity(intent);
                 finish();
 
-            }
-/*
-            if(place.equals("관광지")){
-                Intent intent = new Intent(SplashActivity.this, Category_detail5.class);
 
-                intent.putExtra("latitude", latitude);
-                intent.putExtra("longitude", longitude);
-                startActivity(intent);
-                finish();
-            }
-else{
-    finish();
-            }*/
+
+
         }
 
         @Override

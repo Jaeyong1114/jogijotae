@@ -47,14 +47,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if(v.getId()==R.id.place_btn) {
             Intent intent01 = new Intent(this, Placemain.class);
+            Intent intent02 = getIntent();
+            double latitude = intent02.getDoubleExtra("latitude", 0);
+            double longitude = intent02.getDoubleExtra("longitude", 0);
+            intent01.putExtra("latitude", latitude);
+            intent01.putExtra("longitude", longitude);
             startActivity(intent01);
         }
         if(v.getId()==R.id.res_btn) {
                 Intent intent01 = new Intent(this, Restaurantmain.class);
+            Intent intent02 = getIntent();
+            double latitude = intent02.getDoubleExtra("latitude", 0);
+            double longitude = intent02.getDoubleExtra("longitude", 0);
+            intent01.putExtra("latitude", latitude);
+            intent01.putExtra("longitude", longitude);
                 startActivity(intent01);
             }
         if(v.getId()==R.id.category_btn) {
             Intent intent01 = new Intent(this, Categorymain.class);
+            Intent intent02 = getIntent();
+            double latitude = intent02.getDoubleExtra("latitude", 0);
+            double longitude = intent02.getDoubleExtra("longitude", 0);
+            intent01.putExtra("latitude", latitude);
+            intent01.putExtra("longitude", longitude);
             startActivity(intent01);
 
         }
@@ -63,6 +78,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
             Intent data_recevie = getIntent();
+            Intent intent02 = getIntent();
+            double latitude = intent02.getDoubleExtra("latitude", 0);
+            double longitude = intent02.getDoubleExtra("longitude", 0);
+
             String email = data_recevie.getStringExtra("email");
 
             db.collection("users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -107,6 +126,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
 
                     Intent intent01 = new Intent(MainActivity.this, Interestmain.class);
+                    intent01.putExtra("latitude", latitude);
+                    intent01.putExtra("longitude", longitude);
                     intent01.putExtra("place01", place01);
                     intent01.putExtra("place02", place02);
                     intent01.putExtra("place03", place03);

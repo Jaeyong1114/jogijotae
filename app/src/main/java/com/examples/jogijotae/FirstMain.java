@@ -47,6 +47,13 @@ public class FirstMain extends AppCompatActivity implements View.OnClickListener
     btn01.setOnClickListener(this);
     btn02.setOnClickListener(this);
     btn03.setOnClickListener(this);
+
+
+
+
+
+
+
     }
 
     @Override
@@ -94,11 +101,23 @@ public class FirstMain extends AppCompatActivity implements View.OnClickListener
         }
 
         if(v.getId()==R.id.button2){
+
+            Intent intent = getIntent();
+            double latitude = intent.getDoubleExtra("latitude", 0);
+            double longitude = intent.getDoubleExtra("longitude", 0);
+
             Intent intent01 = new Intent(this, LoginActivity.class);
+            intent01.putExtra("latitude", latitude);
+            intent01.putExtra("longitude", longitude);
             startActivity(intent01);
         }
         if(v.getId()==R.id.button3){
             Intent intent02 = new Intent(this, RegisterActivity.class);
+            Intent intent = getIntent();
+            double latitude = intent.getDoubleExtra("latitude", 0);
+            double longitude = intent.getDoubleExtra("longitude", 0);
+            intent02.putExtra("latitude", latitude);
+            intent02.putExtra("longitude", longitude);
             startActivity(intent02);
         }
     }
@@ -146,18 +165,30 @@ public class FirstMain extends AppCompatActivity implements View.OnClickListener
                                 if (document != null) {
                                     if (document.exists()) {
                                         Log.d(TAG, "DocumentSnapshot data:" + document.getData());
+                                       Intent intent01 = getIntent();
+                                        double latitude = intent01.getDoubleExtra("latitude", 0);
+                                        double longitude = intent01.getDoubleExtra("longitude", 0);
                                         Intent intent = new Intent(FirstMain.this, MainActivity.class);
+                                        intent.putExtra("latitude", latitude);
+                                        intent.putExtra("longitude", longitude);
                                         startToast(email + " 님 환영합니다.");
                                         intent.putExtra("email", email);
+                                        Log.d(TAG,"내위치는"+latitude+","+longitude);
                                         startActivity(intent);
                                     } else {
                                         Log.d(TAG, "No such document");
+                                        Intent intent01 = getIntent();
+                                        double latitude = intent01.getDoubleExtra("latitude", 0);
+                                        double longitude = intent01.getDoubleExtra("longitude", 0);
                                         Intent interestCheck = new Intent(FirstMain.this, User_interest.class);
+                                        interestCheck.putExtra("latitude", latitude);
+                                        interestCheck.putExtra("longitude", longitude);
                                         interestCheck.putExtra("name", name);
                                         interestCheck.putExtra("email", email);
                                         interestCheck.putExtra("gender", gender);
                                         interestCheck.putExtra("birthyear", birthyear);
                                         interestCheck.putExtra("mobile", mobile);
+                                        Log.d(TAG,"내위치는"+latitude+","+longitude);
                                         startActivity(interestCheck);
                                     }
                                 } else {

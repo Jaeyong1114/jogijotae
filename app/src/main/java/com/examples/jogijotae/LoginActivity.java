@@ -49,8 +49,14 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                Intent intent01 = getIntent();
+                double latitude = intent01.getDoubleExtra("latitude", 0);
+                double longitude = intent01.getDoubleExtra("longitude", 0);
                 //intent함수를 통해 register액티비티 함수를 호출한다.
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                Intent intent02 = new Intent(LoginActivity.this, RegisterActivity.class);
+                intent02.putExtra("latitude", latitude);
+                intent02.putExtra("longitude", longitude);
+                startActivity(intent02);
             }
         });
 
@@ -59,9 +65,14 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                Intent intent01 = getIntent();
+                double latitude = intent01.getDoubleExtra("latitude", 0);
+                double longitude = intent01.getDoubleExtra("longitude", 0);
                 //intent함수를 통해 password_reset액티비티 함수를 호출한다.
-                startActivity(new Intent(LoginActivity.this, password_reset.class));
-
+                Intent intent02=new Intent(LoginActivity.this, password_reset.class);
+                intent02.putExtra("latitude", latitude);
+                intent02.putExtra("longitude", longitude);
+                startActivity(intent02);
             }
         });
 
@@ -81,7 +92,12 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     if (user == null) {
+                                        Intent intent01 = getIntent();
+                                        double latitude = intent01.getDoubleExtra("latitude", 0);
+                                        double longitude = intent01.getDoubleExtra("longitude", 0);
                                         Intent intent = new Intent(LoginActivity.this, Userinformation.class);
+                                        intent.putExtra("latitude", latitude);
+                                        intent.putExtra("longitude", longitude);
                                         startActivity(intent);
                                         finish();
                                     } else {
@@ -94,15 +110,25 @@ public class LoginActivity extends AppCompatActivity {
                                                     DocumentSnapshot document = task.getResult();
                                                     if (document != null) {
                                                         if (document.exists()) {
+                                                            Intent intent01 = getIntent();
+                                                            double latitude = intent01.getDoubleExtra("latitude", 0);
+                                                            double longitude = intent01.getDoubleExtra("longitude", 0);
                                                             Log.d(TAG, "DocumentSnapshot data:" + document.getData());
                                                             Intent intent = new Intent(LoginActivity.this,  MainActivity.class);
+                                                            intent.putExtra("latitude", latitude);
+                                                            intent.putExtra("longitude", longitude);
                                                             intent.putExtra("email", email);
                                                             startActivity(intent);
                                                             startToast(email + " 님 환영합니다.");
                                                             finish();
                                                         } else {
+                                                            Intent intent01 = getIntent();
+                                                            double latitude = intent01.getDoubleExtra("latitude", 0);
+                                                            double longitude = intent01.getDoubleExtra("longitude", 0);
                                                             Log.d(TAG, "No such document");
                                                             Intent intent = new Intent(LoginActivity.this, Userinformation.class);
+                                                            intent.putExtra("latitude", latitude);
+                                                            intent.putExtra("longitude", longitude);
                                                             startActivity(intent);
                                                             finish();
                                                         }

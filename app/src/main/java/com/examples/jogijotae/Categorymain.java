@@ -156,19 +156,30 @@ String k = "한식";
 
         if(v.getId()==R.id.gps_category_text) {
 
+            Intent intent02 = getIntent();
+            double latitude = intent02.getDoubleExtra("latitude", 0);
+            double longitude = intent02.getDoubleExtra("longitude", 0);
+            Intent intent01 = new Intent(Categorymain.this, Category_test.class);
+            intent01.putExtra("latitude", latitude);
+            intent01.putExtra("longitude", longitude);
+            intent01.putExtra("1", "맛집");
+            Log.d(TAG,"내위치는"+latitude+","+longitude);
 
-            Intent intent01 = new Intent(Categorymain.this, SplashActivity.class);
-            intent01.putExtra("1","맛집");
             startActivity(intent01);
-        }
 
-        if(v.getId()==R.id.gps_category_text2) {
-           /* Intent intent01 = new Intent(Categorymain.this, SplashActivity.class);
+        }
+            if (v.getId() == R.id.gps_category_text2) {
+                Intent intent02 = getIntent();
+                double latitude = intent02.getDoubleExtra("latitude", 0);
+                double longitude = intent02.getDoubleExtra("longitude", 0);
+            Intent intent01 = new Intent(Categorymain.this, Category_detail5.class);
+                intent01.putExtra("latitude", latitude);
+                intent01.putExtra("longitude", longitude);
             intent01.putExtra("2","관광지");
-            startActivity(intent01);*/
+                Log.d(TAG,"내위치는"+latitude+","+longitude);
+            startActivity(intent01);
+
+            }
 
         }
-
-
     }
-}
