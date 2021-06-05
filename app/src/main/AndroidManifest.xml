@@ -15,7 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity android:name=".Interest_restarant"></activity>
-        <activity android:name=".Category_detail3" />
         <activity android:name=".Category_detail6"></activity>
         <activity android:name=".Category_detail5" />
         <activity android:name=".Category_detail4" />

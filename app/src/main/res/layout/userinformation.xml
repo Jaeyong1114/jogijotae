@@ -6,10 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".Userinformation">
 
-    <Button
+    <android.widget.Button
         android:id="@+id/checkButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="#BDBDBD"
         android:text="확인"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
-//하씨팔 왜안돼
+
 
     <EditText
         android:id="@+id/et_id"
@@ -49,10 +49,11 @@
         app:layout_constraintStart_toStartOf="@+id/et_pw"
         app:layout_constraintTop_toBottomOf="@+id/et_pw" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#BDBDBD"
         android:text="회원가입"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

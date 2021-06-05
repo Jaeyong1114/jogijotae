@@ -58,6 +58,7 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
         String birthyear = data_recevie.getStringExtra("birthyear");
         String gender = data_recevie.getStringExtra("gender");
         String mobile = data_recevie.getStringExtra("mobile");
+        String check = data_recevie.getStringExtra("check");
 
         String place01 = "", place02 = "", place03 = "", place04 = "", place05 = "", place06 = "",
                 restarant01 = "", restarant02 = "", restarant03 = "", restarant04 = "";
@@ -99,11 +100,20 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
 
                     @Override
                     public void onSuccess(Void aVoid) {
-                        startToast("회원정보 등록을 완료하였습니다.");
-                        Intent intent = new Intent(User_interest.this, MainActivity.class);
-                        intent.putExtra("email", email);
-                        startActivity(intent);
-                        finish();
+                        if(check.length()==2) {
+                            startToast("회원정보 수정을 완료하였습니다.");
+                            Intent intent = new Intent(User_interest.this, MainActivity.class);
+                            intent.putExtra("email", email);
+                            startActivity(intent);
+                            finish();
+                        }
+                        else {
+                            startToast("회원정보 등록을 완료하였습니다.");
+                            Intent intent = new Intent(User_interest.this, MainActivity.class);
+                            intent.putExtra("email", email);
+                            startActivity(intent);
+                            finish();
+                        }
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

@@ -120,10 +120,11 @@
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/UI_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="#BDBDBD"
         android:text="취향등록"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"

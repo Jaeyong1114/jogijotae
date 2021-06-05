@@ -1,14 +1,18 @@
 package com.examples.jogijotae;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -17,13 +21,18 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.nhn.android.naverlogin.OAuthLogin;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
     Button place_btn, res_btn, category_btn , interest_btn;
+    Button main_btn_logout, main_btn_infoChange;
     String place01 = "x", place02 = "x", place03 = "x", place04 = "x", place05 = "x", place06 = "x";
     String restarant01 = "x", restarant02 = "x", restarant03 = "x", restarant04 = "x";
+
+    OAuthLogin mOAuthLoginModule;
+    Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
@@ -35,12 +44,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         res_btn=findViewById(R.id.res_btn);
         category_btn=findViewById(R.id.category_btn);
         interest_btn=findViewById(R.id.interest_btn);
-
+        main_btn_logout = findViewById(R.id.main_btn_logout);
+        main_btn_infoChange = findViewById(R.id.main_btn_infoChange);
 
         place_btn.setOnClickListener(this);
         res_btn.setOnClickListener(this);
         category_btn.setOnClickListener(this);
         interest_btn.setOnClickListener(this);
+        main_btn_logout.setOnClickListener(this);
+        main_btn_infoChange.setOnClickListener(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent data_recevie = getIntent();
+        String email = data_recevie.getStringExtra("email");
+        if (email.contains("naver")) {
+            Intent intent = new Intent(MainActivity.this, FirstMain.class);
+            startToast("네이버 로그아웃 되었습니다.");
+            mOAuthLoginModule.getInstance().logout(mContext);
+            startActivity(intent);
+            finish();
+        }
+        else {
+            startToast("로그아웃 되었습니다.");
+            finish();
+        }
     }
 
     @Override
@@ -124,6 +155,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             });
 
         }
+        if (v.getId() == R.id.main_btn_logout) {
+            Intent data_recevie = getIntent();
+            String email = data_recevie.getStringExtra("email");
+            if (email.contains("naver")) {
+                Intent intent = new Intent(MainActivity.this, FirstMain.class);
+                startToast("네이버 로그아웃 되었습니다.");
+                mOAuthLoginModule.getInstance().logout(mContext);
+                startActivity(intent);
+                finish();
+            }
+            else {
+                startToast("로그아웃 되었습니다.");
+                finish();
+            }
+        }
+        if (v.getId() == R.id.main_btn_infoChange) {
+            Intent data_recevie = getIntent();
+            String email = data_recevie.getStringExtra("email");
 
+            Intent intent = new Intent(MainActivity.this, User_interest.class);
+            intent.putExtra("check", "체크");
+            intent.putExtra("email", email);
+            startActivity(intent);
+        }
+
+    }
+    private void startToast(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 }
