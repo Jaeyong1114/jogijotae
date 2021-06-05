@@ -21,7 +21,7 @@ public class Categorymain extends AppCompatActivity implements View.OnClickListe
 
     TextView resinterest_text1, resinterest_text2, resinterest_text3, resinterest_text4;
     TextView placeinterest_text1, placeinterest_text2, placeinterest_text3, placeinterest_text4;
-    TextView placeinterest2_text1,placeinterest2_text2, gps_category_text;
+    TextView placeinterest2_text1,placeinterest2_text2, gps_category_text, gps_category_text2;
 private static final String TAG = Categorymain.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ private static final String TAG = Categorymain.class.getSimpleName();
         placeinterest2_text1=findViewById(R.id.placeinterest2_text1);
         placeinterest2_text2=findViewById(R.id.placeinterest2_text2);
         gps_category_text=findViewById(R.id.gps_category_text);
+        gps_category_text2=findViewById(R.id.gps_category_text2);
 
         resinterest_text1.setOnClickListener(this);
         resinterest_text2.setOnClickListener(this);
@@ -55,6 +56,7 @@ private static final String TAG = Categorymain.class.getSimpleName();
         placeinterest2_text2.setOnClickListener(this);
 
         gps_category_text.setOnClickListener(this);
+        gps_category_text2.setOnClickListener(this);
 
 
 
@@ -155,9 +157,18 @@ String k = "한식";
         if(v.getId()==R.id.gps_category_text) {
 
 
-            Intent intent01 = new Intent(Categorymain.this, Category_detail3.class);
+            Intent intent01 = new Intent(Categorymain.this, SplashActivity.class);
+            intent01.putExtra("1","맛집");
             startActivity(intent01);
         }
+
+        if(v.getId()==R.id.gps_category_text2) {
+           /* Intent intent01 = new Intent(Categorymain.this, SplashActivity.class);
+            intent01.putExtra("2","관광지");
+            startActivity(intent01);*/
+
+        }
+
 
     }
 }

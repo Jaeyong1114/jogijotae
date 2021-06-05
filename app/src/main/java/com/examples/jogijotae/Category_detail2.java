@@ -49,8 +49,11 @@ public class Category_detail2 extends AppCompatActivity {
                                 if (document.getString("position").equals(""+position+"")   ){
 
 
-                                    category_detailtext.append(document.getString("name")+"\n");
-                                    category_detailtext.append(document.getString("ex")+"\n");
+                                    category_detailtext.append("이름:  "+document.getString("name")+"\n\n");
+                                    category_detailtext.append("주소:  "+document.getString("address")+"\n\n");
+                                    category_detailtext.append("전화번호:  "+document.getString("phone")+"\n\n");
+                                    category_detailtext.append("소개:  "+document.getString("ex")+"\n")
+                                    ;
 
                                 }
                             }

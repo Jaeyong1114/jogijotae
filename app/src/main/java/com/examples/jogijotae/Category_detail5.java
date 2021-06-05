@@ -28,13 +28,14 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class Category_detail3 extends AppCompatActivity implements AdapterView.OnItemClickListener {
+          /*             구현중         */
+public class Category_detail5 extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     String[] directionlati = new String[50];
     String[] directionlongi = new String[50];
     String[] newposition = new String[50];
 
-String newenewposition[];
+    String newenewposition[];
 
 
 
@@ -50,7 +51,7 @@ String newenewposition[];
 
 
     private List<String> data =new ArrayList<>();
-    private static final String TAG = "Category_detail3";
+    private static final String TAG = "Category_detail5";
 
 
     int i=0; int y=0; int f=0;
@@ -71,8 +72,8 @@ String newenewposition[];
 
         dist = dist * 1.609344;
 
- return (dist);
-}
+        return (dist);
+    }
 
     private double deg2rad(double deg) {
         return(deg * Math.PI / 180.0);
@@ -91,7 +92,7 @@ String newenewposition[];
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_category_detail3);
+        setContentView(R.layout.activity_category_detail5);
 
 
 
@@ -125,7 +126,7 @@ String newenewposition[];
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                if ((document.getString("division").equals("R"))) {
+                                if ((document.getString("division").equals("P"))) {
 
 /*
                                     String placelongi = directionlongi[i];
@@ -149,34 +150,34 @@ String newenewposition[];
                                     double newplacelongi = Double.parseDouble(placelongi);
                                     // Log.d(TAG,"더블형변환"+newplacelongi);
 
-                                 //   Log.d(TAG ,"경로테스트"+directionlati[i]+","+directionlongi[i]);
+                                    //   Log.d(TAG ,"경로테스트"+directionlati[i]+","+directionlongi[i]);
 
                                     Log.d(TAG,"계산식"+distance(latitude, longitude,newplacelati,newplacelongi));
 
                                     //location.append(""+distance(latitude, longitude,newplacelati,newplacelongi) + "\n");
 
                                     int newdistance = Integer.parseInt(String.valueOf(Math.round(distance(latitude, longitude,newplacelati,newplacelongi))));
-                                     // String newdistance2 = String.valueOf(newdistance);
+                                    // String newdistance2 = String.valueOf(newdistance);
 
 
-                                   Collections.sort(data);
+                                    Collections.sort(data);
                                     //정렬
 
 
 
                                     POJOclass POJOclass = new POJOclass(document.getString("name"),document.getString("lati"),document.getString("longi"),newdistance,document.getString("position"));//name,lati,longi,distance,position
-                Log.d(TAG,"테스트해볼겡용"+POJOclass.toString());
+                                    Log.d(TAG,"테스트해볼겡용"+POJOclass.toString());
 
 
-               data.add(POJOclass.getDistance()+"km\n"+POJOclass.getName());
+                                    data.add(POJOclass.getDistance()+"km\n"+POJOclass.getName());
 
 
-            //  newenewposition[f] = POJOclass.getPosition();
-               Log.d(TAG,"뉴뉴포지션"+newenewposition);
+                                    //  newenewposition[f] = POJOclass.getPosition();
+                                    Log.d(TAG,"뉴뉴포지션"+newenewposition);
 
 
-Log.d(TAG,"새포지션 "+ POJOclass.getPosition());
-                                //거리순 리스트뷰 정렬
+                                    Log.d(TAG,"새포지션 "+ POJOclass.getPosition());
+                                    //거리순 리스트뷰 정렬
 
                                     adapter.notifyDataSetChanged();
 
@@ -188,7 +189,7 @@ Log.d(TAG,"새포지션 "+ POJOclass.getPosition());
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
 
-              Log.d(TAG,"현재 내위치"+latitude+","+longitude);
+                        Log.d(TAG,"현재 내위치"+latitude+","+longitude);
                     }
                 });
 
@@ -209,7 +210,7 @@ Log.d(TAG,"새포지션 "+ POJOclass.getPosition());
 
 
         Log.d(TAG,"포지션테스트"+newposition[position]);
-        Intent intent01 = new Intent(Category_detail3.this,Category_detail4.class);
+        Intent intent01 = new Intent(Category_detail5.this,Category_detail4.class);
         intent01.putExtra("position",newposition[position]);
         startActivity(intent01);
 
