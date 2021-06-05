@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 public class Interestmain extends AppCompatActivity implements View.OnClickListener {
 
     Button interest_btn_place, interest_btn_res;
+    private static final String TAG = "Interestmain";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +30,45 @@ public class Interestmain extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.interest_btn_place)
         {
             Intent data_recevie = getIntent();
-            String email = data_recevie.getStringExtra("email");
+            String place01 = data_recevie.getStringExtra("place01");
+            String place02 = data_recevie.getStringExtra("place02");
+            String place03 = data_recevie.getStringExtra("place03");
+            String place04 = data_recevie.getStringExtra("place04");
+            String place05 = data_recevie.getStringExtra("place05");
+            String place06 = data_recevie.getStringExtra("place06");
+            String name = data_recevie.getStringExtra("name");
+
+
+
             Intent interest_place = new Intent(Interestmain.this, Interest_place.class);
-            interest_place.putExtra("email", email);
+            interest_place.putExtra("place01", place01);
+            interest_place.putExtra("place02", place02);
+            interest_place.putExtra("place03", place03);
+            interest_place.putExtra("place04", place04);
+            interest_place.putExtra("place05", place05);
+            interest_place.putExtra("place06", place06);
+            interest_place.putExtra("name", name);
             startActivity(interest_place);
         }
         if (v.getId() == R.id.interest_btn_res)
         {
+            Intent data_recevie = getIntent();
+            String restarant01 = data_recevie.getStringExtra("restarant01");
+            String restarant02 = data_recevie.getStringExtra("restarant02");
+            String restarant03 = data_recevie.getStringExtra("restarant03");
+            String restarant04 = data_recevie.getStringExtra("restarant04");
+            String name = data_recevie.getStringExtra("name");
 
+
+
+            Intent interest_res = new Intent(Interestmain.this, Interest_restarant.class);
+            interest_res.putExtra("restarant01", restarant01);
+            interest_res.putExtra("restarant02", restarant02);
+            interest_res.putExtra("restarant03", restarant03);
+            interest_res.putExtra("restarant04", restarant04);
+            interest_res.putExtra("name", name);
+
+            startActivity(interest_res);
         }
     }
 }

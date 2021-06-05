@@ -59,8 +59,8 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
         String gender = data_recevie.getStringExtra("gender");
         String mobile = data_recevie.getStringExtra("mobile");
 
-        String place01 = null, place02 = null, place03 = null, place04 = null, place05 = null, place06 = null,
-                restarant01 = null, restarant02 = null, restarant03 = null, restarant04 = null;
+        String place01 = "", place02 = "", place03 = "", place04 = "", place05 = "", place06 = "",
+                restarant01 = "", restarant02 = "", restarant03 = "", restarant04 = "";
 
         if (UI_check_place01.isChecked()) {
             place01 = UI_check_place01.getText().toString();

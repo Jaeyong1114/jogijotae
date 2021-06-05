@@ -147,7 +147,8 @@ public class FirstMain extends AppCompatActivity implements View.OnClickListener
                                     if (document.exists()) {
                                         Log.d(TAG, "DocumentSnapshot data:" + document.getData());
                                         Intent intent = new Intent(FirstMain.this, MainActivity.class);
-                                        startToast("로그인 완료.");
+                                        startToast(email + " 님 환영합니다.");
+                                        intent.putExtra("email", email);
                                         startActivity(intent);
                                     } else {
                                         Log.d(TAG, "No such document");

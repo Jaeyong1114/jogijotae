@@ -96,7 +96,9 @@ public class LoginActivity extends AppCompatActivity {
                                                         if (document.exists()) {
                                                             Log.d(TAG, "DocumentSnapshot data:" + document.getData());
                                                             Intent intent = new Intent(LoginActivity.this,  MainActivity.class);
+                                                            intent.putExtra("email", email);
                                                             startActivity(intent);
+                                                            startToast(email + " 님 환영합니다.");
                                                             finish();
                                                         } else {
                                                             Log.d(TAG, "No such document");
@@ -119,5 +121,8 @@ public class LoginActivity extends AppCompatActivity {
                         });
             }
         });
+    }
+    private void startToast(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 }

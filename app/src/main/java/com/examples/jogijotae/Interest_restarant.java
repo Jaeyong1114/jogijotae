@@ -22,18 +22,19 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Interest_place extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class Interest_restarant extends AppCompatActivity implements AdapterView.OnItemClickListener {
     int i = 0;
-    String place01 = "x", place02 = "x", place03 = "x", place04 = "x", place05 = "x", place06 = "x";
+    String restarant01 = "x", restarant02 = "x", restarant03 = "x", restarant04 = "x";
     private ListView list;
     private List<String> data =new ArrayList<>();
-    private static final String TAG = "Interest_place";
+    private static final String TAG = "Interest_restarant";
 
     String[] newposition = new String[50];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_interest_place);
+        setContentView(R.layout.activity_interest_restarant);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,data);
         list =findViewById(R.id.listview);
@@ -42,12 +43,10 @@ public class Interest_place extends AppCompatActivity implements AdapterView.OnI
         list.setOnItemClickListener(this);
 
         Intent data_recevie = getIntent();
-        place01 = data_recevie.getStringExtra("place01");
-        place02 = data_recevie.getStringExtra("place02");
-        place03 = data_recevie.getStringExtra("place03");
-        place04 = data_recevie.getStringExtra("place04");
-        place05 = data_recevie.getStringExtra("place05");
-        place06 = data_recevie.getStringExtra("place06");
+        restarant01 = data_recevie.getStringExtra("restarant01");
+        restarant02 = data_recevie.getStringExtra("restarant02");
+        restarant03 = data_recevie.getStringExtra("restarant03");
+        restarant04 = data_recevie.getStringExtra("restarant04");
         String email = data_recevie.getStringExtra("email");
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -61,12 +60,10 @@ public class Interest_place extends AppCompatActivity implements AdapterView.OnI
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                if (document.getString("category2").equals(""+place01+"") ||
-                                        document.getString("category2").equals(""+place02+"") ||
-                                        document.getString("category2").equals(""+place03+"") ||
-                                        document.getString("category2").equals(""+place04+"") ||
-                                        document.getString("category3").equals(""+place05+"") ||
-                                        document.getString("category3").equals(""+place06+"")){
+                                if (document.getString("category").equals(""+restarant01+"") ||
+                                        document.getString("category").equals(""+restarant02+"") ||
+                                        document.getString("category").equals(""+restarant03+"") ||
+                                        document.getString("category").equals(""+restarant04+"")){
 
                                     data.add (document.getString("name"));
                                     newposition[i++]=document.getString("position");
@@ -86,7 +83,7 @@ public class Interest_place extends AppCompatActivity implements AdapterView.OnI
         String[] position2 = new String[50];
         position2[position] = newposition[position];
 
-        Intent intent01 = new Intent(Interest_place.this, Interest_detail.class);
+        Intent intent01 = new Intent(Interest_restarant.this, Interest_detail.class);
         intent01.putExtra("position",newposition[position]);
         startActivity(intent01);
     }

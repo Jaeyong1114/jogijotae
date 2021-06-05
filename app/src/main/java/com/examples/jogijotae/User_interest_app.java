@@ -64,8 +64,8 @@ public class User_interest_app extends AppCompatActivity implements View.OnClick
         //Log.d(TAG,"이메일"+user.getEmail());
 
 
-        String place01 = null, place02 = null, place03 = null, place04 = null,place05 = null, place06 = null,
-                restarant01 = null, restarant02 = null, restarant03 = null, restarant04 = null;
+        String place01 = "", place02 = "", place03 = "", place04 = "",place05 = "", place06 = "",
+                restarant01 = "", restarant02 = "", restarant03 = "", restarant04 = "";
 
 
 
@@ -113,6 +113,7 @@ public class User_interest_app extends AppCompatActivity implements View.OnClick
                     public void onSuccess(Void aVoid) {
                         startToast("회원정보 등록을 완료하였습니다.");
                         Intent intent = new Intent(User_interest_app.this, MainActivity.class);
+                        intent.putExtra("email", email);
                         startActivity(intent);
                         finish();
                     }
