@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -40,7 +41,6 @@ public class FirstMain extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_first_main);
 
         mContext = getApplicationContext();
-
     btn01=findViewById(R.id.button);
     btn02=findViewById(R.id.button2);
     btn03=findViewById(R.id.button3);
@@ -175,6 +175,7 @@ public class FirstMain extends AppCompatActivity implements View.OnClickListener
                                         intent.putExtra("email", email);
                                         Log.d(TAG,"내위치는"+latitude+","+longitude);
                                         startActivity(intent);
+                                        finish();
                                     } else {
                                         Log.d(TAG, "No such document");
                                         Intent intent01 = getIntent();

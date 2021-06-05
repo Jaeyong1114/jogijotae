@@ -13,24 +13,26 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/interest_btn_place"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:background="#BDBDBD"
         android:text="관광지 추천"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/interest_btn_res"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:background="#BDBDBD"
         android:text="맛집 추천"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
