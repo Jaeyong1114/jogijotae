@@ -38,7 +38,7 @@ public class Category_detail6 extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         Intent data_receive = getIntent();
                         //  int position = data_receive.getIntExtra("position",1);
-                        String position = data_receive.getStringExtra("position");
+                        String name = data_receive.getStringExtra("name");
 
 
 
@@ -48,7 +48,7 @@ public class Category_detail6 extends AppCompatActivity {
 
                                /* if ((document.getString("category").equals("한식"))  ||(document.getString("category2").equals("가족여행"))
                                 ||document.getString("category3").equals("가족여행")){*/
-                                if (document.getString("position").equals(""+position+"")   ){
+                                if (document.getString("name").equals(""+name+"")   ){
 
 
                                     gps_detailtext2.append("이름:  "+document.getString("name")+"\n\n");

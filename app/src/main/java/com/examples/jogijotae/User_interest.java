@@ -100,19 +100,19 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
 
                     @Override
                     public void onSuccess(Void aVoid) {
-                        startToast("회원정보 등록을 완료하였습니다.");
+                        //startToast("회원정보 등록을 완료하였습니다.");
                         Intent intent01 = getIntent();
                         double latitude = intent01.getDoubleExtra("latitude", 0);
                         double longitude = intent01.getDoubleExtra("longitude", 0);
-                        Intent intent = new Intent(User_interest.this, MainActivity.class);
-                        intent.putExtra("latitude", latitude);
-                        intent.putExtra("longitude", longitude);
-                        intent.putExtra("email", email);
-                        startActivity(intent);
-                        finish();
+
+
+
+
                         if(check.length()==2) {
                             startToast("회원정보 수정을 완료하였습니다.");
                             Intent intent = new Intent(User_interest.this, MainActivity.class);
+                            intent.putExtra("latitude", latitude);
+                            intent.putExtra("longitude", longitude);
                             intent.putExtra("email", email);
                             startActivity(intent);
                             finish();
@@ -120,6 +120,8 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
                         else {
                             startToast("회원정보 등록을 완료하였습니다.");
                             Intent intent = new Intent(User_interest.this, MainActivity.class);
+                            intent.putExtra("latitude", latitude);
+                            intent.putExtra("longitude", longitude);
                             intent.putExtra("email", email);
                             startActivity(intent);
                             finish();

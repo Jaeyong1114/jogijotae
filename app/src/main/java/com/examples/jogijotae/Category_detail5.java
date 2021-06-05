@@ -109,7 +109,7 @@ public class Category_detail5 extends AppCompatActivity {
         person.add(new Person("키자니아", distance(latitude,longitude,37.510873,127.0942724),37.510873,127.0942724));
         person.add(new Person("롯데월드 아쿠아리움", distance(latitude,longitude,37.5108815,127.0942616),37.5108815,127.0942616));
         person.add(new Person("삼전도비", distance(latitude,longitude,37.50923323071838,127.0991518687846),37.50923323071838,127.0991518687846));
-        person.add(new Person("서울올림픽기념관점", distance(latitude,longitude,37.52031527829416,127.11557246926829),37.52031527829416,127.11557246926829));
+        person.add(new Person("서울올림픽기념관", distance(latitude,longitude,37.52031527829416,127.11557246926829),37.52031527829416,127.11557246926829));
         person.add(new Person("아시아공원", distance(latitude,longitude,37.51015409975009,127.07676126714965),37.51015409975009,127.07676126714965));
         person.add(new Person("올림픽공원", distance(latitude,longitude,37.52089250985871,127.12160148713528),37.52089250985871,127.12160148713528));
         person.add(new Person("평화의광장", distance(latitude,longitude,37.51887978173245,127.11688305744877),37.51887978173245,127.11688305744877));

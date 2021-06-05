@@ -62,9 +62,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent data_recevie = getIntent();
         String email = data_recevie.getStringExtra("email");
         if (email.contains("naver")) {
+            Intent intent02 = getIntent();
+            double latitude = intent02.getDoubleExtra("latitude", 0);
+            double longitude = intent02.getDoubleExtra("longitude", 0);
             Intent intent = new Intent(MainActivity.this, FirstMain.class);
             startToast("네이버 로그아웃 되었습니다.");
             mOAuthLoginModule.getInstance().logout(mContext);
+            intent.putExtra("latitude", latitude);
+            intent.putExtra("longitude", longitude);
             startActivity(intent);
             finish();
         }
@@ -179,10 +184,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.main_btn_logout) {
             Intent data_recevie = getIntent();
             String email = data_recevie.getStringExtra("email");
+
             if (email.contains("naver")) {
+                Intent intent02 = getIntent();
+                double latitude = intent02.getDoubleExtra("latitude", 0);
+                double longitude = intent02.getDoubleExtra("longitude", 0);
                 Intent intent = new Intent(MainActivity.this, FirstMain.class);
                 startToast("네이버 로그아웃 되었습니다.");
                 mOAuthLoginModule.getInstance().logout(mContext);
+                intent.putExtra("latitude", latitude);
+                intent.putExtra("longitude", longitude);
                 startActivity(intent);
                 finish();
             }
@@ -194,10 +205,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.main_btn_infoChange) {
             Intent data_recevie = getIntent();
             String email = data_recevie.getStringExtra("email");
+            Intent intent02 = getIntent();
+            double latitude = intent02.getDoubleExtra("latitude", 0);
+            double longitude = intent02.getDoubleExtra("longitude", 0);
 
             Intent intent = new Intent(MainActivity.this, User_interest.class);
             intent.putExtra("check", "체크");
             intent.putExtra("email", email);
+            intent.putExtra("latitude", latitude);
+            intent.putExtra("longitude", longitude);
             startActivity(intent);
         }
 
