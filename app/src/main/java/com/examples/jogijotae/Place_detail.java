@@ -32,10 +32,6 @@ public class Place_detail extends AppCompatActivity {
 
 
 
-
-
-
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 

@@ -29,11 +29,11 @@ import java.util.List;
 
 public class Placemain extends AppCompatActivity implements AdapterView.OnItemClickListener{
     int i = 0;
-    //EditText text01;
+
     private ListView list;
     private   List<String> data =new ArrayList<>();
     private static final String TAG = "Placemain";
-    // ArrayList<String> divi;
+
     String[] newposition = new String[50];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +50,6 @@ public class Placemain extends AppCompatActivity implements AdapterView.OnItemCl
         list.setOnItemClickListener(this);
 
 
-        //text01 = findViewById(R.id.restaurantmain_text);
-
-        // divi = new ArrayList<String>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -84,19 +81,13 @@ public class Placemain extends AppCompatActivity implements AdapterView.OnItemCl
 
 
 
-
-
-
-
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        String[] position2 = new String[50];
-        position2[position] = newposition[position];
 
-        Log.d(TAG,"테스트2"+newposition[position]);
+
         Intent intent01 = new Intent(Placemain.this,Place_detail.class);
         intent01.putExtra("position",newposition[position]);
         startActivity(intent01);

@@ -38,7 +38,7 @@ public class Category_detail2 extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         Intent data_receive = getIntent();
-                      //  int position = data_receive.getIntExtra("position",1);
+
                         String position = data_receive.getStringExtra("position");
                         Log.d(TAG,"이거는"+position);
 
@@ -47,8 +47,7 @@ public class Category_detail2 extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
 
-                               /* if ((document.getString("category").equals("한식"))  ||(document.getString("category2").equals("가족여행"))
-                                ||document.getString("category3").equals("가족여행")){*/
+
                                 if (document.getString("position").equals(""+position+"")   ){
 
 

@@ -61,6 +61,8 @@ ivImage=findViewById(R.id.iv_image);
     @Override
     public void onClick(View v) {
         if (v.getId()== R.id.button) {
+
+
             mOAuthLoginModule = OAuthLogin.getInstance();
             mOAuthLoginModule.init(
                     mContext
@@ -103,7 +105,12 @@ ivImage=findViewById(R.id.iv_image);
         }
 
         if(v.getId()==R.id.button2){
+            Intent data_recevie = getIntent();
 
+            String name = data_recevie.getStringExtra("name");
+            String birthyear = data_recevie.getStringExtra("birthyear");
+            String gender = data_recevie.getStringExtra("gender");
+            String mobile = data_recevie.getStringExtra("mobile");
             Intent intent = getIntent();
             double latitude = intent.getDoubleExtra("latitude", 0);
             double longitude = intent.getDoubleExtra("longitude", 0);
@@ -111,6 +118,10 @@ ivImage=findViewById(R.id.iv_image);
             Intent intent01 = new Intent(this, LoginActivity.class);
             intent01.putExtra("latitude", latitude);
             intent01.putExtra("longitude", longitude);
+            intent01.putExtra("name",name);
+            intent01.putExtra("birthyear",birthyear);
+            intent01.putExtra("gender",gender);
+            intent01.putExtra("mobile",mobile);
             startActivity(intent01);
         }
         if(v.getId()==R.id.button3){
@@ -168,9 +179,15 @@ ivImage=findViewById(R.id.iv_image);
                                     if (document.exists()) {
                                         Log.d(TAG, "DocumentSnapshot data:" + document.getData());
                                        Intent intent01 = getIntent();
+
                                         double latitude = intent01.getDoubleExtra("latitude", 0);
                                         double longitude = intent01.getDoubleExtra("longitude", 0);
                                         Intent intent = new Intent(FirstMain.this, MainActivity.class);
+                                        intent.putExtra("name",name);
+                                        intent.putExtra("birthyear",birthyear);
+                                        intent.putExtra("gender",gender);
+                                        intent.putExtra("mobile",mobile);
+
                                         intent.putExtra("latitude", latitude);
                                         intent.putExtra("longitude", longitude);
                                         startToast(email + " 님 환영합니다.");

@@ -61,6 +61,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Intent data_recevie = getIntent();
         String email = data_recevie.getStringExtra("email");
+        String name =data_recevie.getStringExtra("name");
+        String gender=data_recevie.getStringExtra("gender");
+        String mobile=data_recevie.getStringExtra("mobile");
+        String birthyear = data_recevie.getStringExtra("birthyear");
         if (email.contains("naver")) {
             Intent intent02 = getIntent();
             double latitude = intent02.getDoubleExtra("latitude", 0);
@@ -74,7 +78,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             finish();
         }
         else {
+            Intent intent02 = getIntent();
+            double latitude = intent02.getDoubleExtra("latitude", 0);
+            double longitude = intent02.getDoubleExtra("longitude", 0);
+            Intent intent = new Intent(MainActivity.this, FirstMain.class);
+            intent.putExtra("latitude", latitude);
+            intent.putExtra("longitude", longitude);
+            intent.putExtra("gender",gender);
+            intent.putExtra("mobile", mobile);
+            intent.putExtra("birthyear",birthyear);
+            intent.putExtra("name", name);
             startToast("로그아웃 되었습니다.");
+            startActivity(intent);
             finish();
         }
     }
@@ -193,8 +208,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.main_btn_logout) {
             Intent data_recevie = getIntent();
             String email = data_recevie.getStringExtra("email");
+            String name = data_recevie.getStringExtra("name");
+            String birthyear = data_recevie.getStringExtra("birthyear");
+            String gender = data_recevie.getStringExtra("gender");
+            String mobile = data_recevie.getStringExtra("mobile");
 
             if (email.contains("naver")) {
+
+
+
                 Intent intent02 = getIntent();
                 double latitude = intent02.getDoubleExtra("latitude", 0);
                 double longitude = intent02.getDoubleExtra("longitude", 0);
@@ -203,11 +225,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mOAuthLoginModule.getInstance().logout(mContext);
                 intent.putExtra("latitude", latitude);
                 intent.putExtra("longitude", longitude);
+
                 startActivity(intent);
                 finish();
             }
             else {
+                Intent intent02 = getIntent();
+                double latitude = intent02.getDoubleExtra("latitude", 0);
+                double longitude = intent02.getDoubleExtra("longitude", 0);
+                Intent intent = new Intent(MainActivity.this, FirstMain.class);
                 startToast("로그아웃 되었습니다.");
+                intent.putExtra("latitude", latitude);
+                intent.putExtra("longitude", longitude);
+                intent.putExtra("name",name);
+                intent.putExtra("birthyear",birthyear);
+                intent.putExtra("gender",gender);
+                intent.putExtra("mobile",mobile);
+                startActivity(intent);
                 finish();
             }
         }

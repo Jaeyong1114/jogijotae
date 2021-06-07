@@ -3,45 +3,42 @@ package com.examples.jogijotae;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
+
 import android.view.View;
-import android.view.ViewGroup;
+
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.LinearLayout;
+
+
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.List;
 
 public class Restaurantmain extends AppCompatActivity implements AdapterView.OnItemClickListener {
     int i = 0;
-    //EditText text01;
+
     private ListView list;
-    private TextView textview1;
-    private TextView textview2;
+
     String[] newposition = new String[50];
     private static final String TAG = "Restaurantmain";
-    // ArrayList<String> divi;
+
 
     private List<String> data = new ArrayList<>();
 
@@ -60,24 +57,7 @@ public class Restaurantmain extends AppCompatActivity implements AdapterView.OnI
         list.setAdapter(adapter);
 list.setOnItemClickListener(this);
 
-/*
-        list.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                //intent함수를 통해 register액티비티 함수를 호출한다.
-                startActivity(new Intent(Restaurantmain.this, Placemain.class));
-
-            }
-        });
-
-*/
-
-
-
-        //text01 = findViewById(R.id.restaurantmain_text);
-
-        // divi = new ArrayList<String>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -115,10 +95,7 @@ list.setOnItemClickListener(this);
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String[] position2 = new String[50];
-        position2[position] = newposition[position];
 
-        Log.d(TAG,"테스트2"+newposition[position]);
         Intent intent01 = new Intent(Restaurantmain.this,Restaurant_detail.class);
         intent01.putExtra("position",newposition[position]);
         startActivity(intent01);

@@ -22,8 +22,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Userinformation extends AppCompatActivity {
 
 
-    //다시수정한다 씨팔
-    private static final String TAG = "Memberinfo";
+
+    private static final String TAG = "Userinformation";
     private FirebaseAuth mAuth;
     private RadioGroup rg_gender;
     private RadioButton rb_man, rb_woman;

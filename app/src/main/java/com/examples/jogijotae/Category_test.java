@@ -21,7 +21,7 @@ public class Category_test extends AppCompatActivity {
 
         RecyclerView recyclerView;
         LinearLayoutManager linearLayoutManager;
-        //RecyclerViewAdapter class
+
         RecyclerViewAdapter recyclerViewAdapter;
 
 

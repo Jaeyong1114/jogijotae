@@ -23,7 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
-//수정란
+
 
     Button btn01;
     TextView Registertxt;
@@ -84,7 +84,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = edit01.getText().toString().trim();
                 String pwd = edit02.getText().toString().trim();
+                Intent data_recevie = getIntent();
 
+                String name = data_recevie.getStringExtra("name");
+                String birthyear = data_recevie.getStringExtra("birthyear");
+                String gender = data_recevie.getStringExtra("gender");
+                String mobile = data_recevie.getStringExtra("mobile");
 
                 firebaseAuth.signInWithEmailAndPassword(email, pwd)
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
@@ -98,6 +103,10 @@ public class LoginActivity extends AppCompatActivity {
                                         Intent intent = new Intent(LoginActivity.this, Userinformation.class);
                                         intent.putExtra("latitude", latitude);
                                         intent.putExtra("longitude", longitude);
+                                        intent.putExtra("name",name);
+                                        intent.putExtra("birthyear",birthyear);
+                                        intent.putExtra("gender",gender);
+                                        intent.putExtra("mobile",mobile);
                                         startActivity(intent);
                                         finish();
                                     } else {
@@ -117,6 +126,10 @@ public class LoginActivity extends AppCompatActivity {
                                                             Intent intent = new Intent(LoginActivity.this,  MainActivity.class);
                                                             intent.putExtra("latitude", latitude);
                                                             intent.putExtra("longitude", longitude);
+                                                            intent01.putExtra("name",name);
+                                                            intent01.putExtra("birthyear",birthyear);
+                                                            intent01.putExtra("gender",gender);
+                                                            intent01.putExtra("mobile",mobile);
                                                             intent.putExtra("email", email);
                                                             startActivity(intent);
                                                             startToast(email + " 님 환영합니다.");
@@ -129,6 +142,10 @@ public class LoginActivity extends AppCompatActivity {
                                                             Intent intent = new Intent(LoginActivity.this, Userinformation.class);
                                                             intent.putExtra("latitude", latitude);
                                                             intent.putExtra("longitude", longitude);
+                                                            intent01.putExtra("name",name);
+                                                            intent01.putExtra("birthyear",birthyear);
+                                                            intent01.putExtra("gender",gender);
+                                                            intent01.putExtra("mobile",mobile);
                                                             startActivity(intent);
                                                             finish();
                                                         }

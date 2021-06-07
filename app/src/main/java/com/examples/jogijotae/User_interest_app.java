@@ -119,6 +119,10 @@ public class User_interest_app extends AppCompatActivity implements View.OnClick
                         intent.putExtra("latitude", latitude);
                         intent.putExtra("longitude", longitude);
                         intent.putExtra("email", email);
+                        intent.putExtra("gender",gender);
+                        intent.putExtra("name",name);
+                        intent.putExtra("birthyear",birthyear);
+                        intent.putExtra("mobile",mobile);
                         startActivity(intent);
                         finish();
                     }

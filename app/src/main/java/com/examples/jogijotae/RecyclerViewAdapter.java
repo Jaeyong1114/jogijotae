@@ -81,7 +81,7 @@ private static final String TAG="RecyclerViewAdapter";
 
         // 데이터 결합
         holder.name.setText(data.getDirection()+"km\n"+data.getName());
-        //holder.number.setText(data.getNumber());
+
 
     }
 
