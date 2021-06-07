@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -108,21 +109,34 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
 
 
 
-                        if(check.length()==2) {
+                        if(!TextUtils.isEmpty(data_recevie.getStringExtra("check"))) { //인텐트로 받아온 체크에 값이 있을경우
                             startToast("회원정보 수정을 완료하였습니다.");
+                            Intent data_recevie = getIntent();
+
+
                             Intent intent = new Intent(User_interest.this, MainActivity.class);
                             intent.putExtra("latitude", latitude);
                             intent.putExtra("longitude", longitude);
                             intent.putExtra("email", email);
+                            intent.putExtra("name", name);
+                            intent.putExtra("birthyear", birthyear);
+                            intent.putExtra("gender", gender);
+                            intent.putExtra("mobile", mobile);
                             startActivity(intent);
                             finish();
                         }
                         else {
-                            startToast("회원정보 등록을 완료하였습니다.");
+                            startToast("회원정보 등록을 완료하였습니다."); //인텐트로 받아온 체크에 값이 없을경우 (처음 등록하는경우)
                             Intent intent = new Intent(User_interest.this, MainActivity.class);
+
                             intent.putExtra("latitude", latitude);
                             intent.putExtra("longitude", longitude);
                             intent.putExtra("email", email);
+                            intent.putExtra("name", name);
+                            intent.putExtra("birthyear", birthyear);
+                            intent.putExtra("gender", gender);
+                            intent.putExtra("mobile", mobile);
+
                             startActivity(intent);
                             finish();
                         }

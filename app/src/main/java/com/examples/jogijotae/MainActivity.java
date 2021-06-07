@@ -119,6 +119,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             double longitude = intent02.getDoubleExtra("longitude", 0);
 
             String email = data_recevie.getStringExtra("email");
+            String name = data_recevie.getStringExtra("name");
+            String birthyear = data_recevie.getStringExtra("birthyear");
+            String gender = data_recevie.getStringExtra("gender");
+            String mobile = data_recevie.getStringExtra("mobile");
 
             db.collection("users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
@@ -175,6 +179,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     intent01.putExtra("restarant03", restarant03);
                     intent01.putExtra("restarant04", restarant04);
                     intent01.putExtra("email", email);
+                    intent01.putExtra("name", name);
+                    intent01.putExtra("birthyear", birthyear);
+                    intent01.putExtra("gender", gender);
+                    intent01.putExtra("mobile", mobile);
+
                     startActivity(intent01);
                 }
 
@@ -205,6 +214,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.main_btn_infoChange) {
             Intent data_recevie = getIntent();
             String email = data_recevie.getStringExtra("email");
+            String name = data_recevie.getStringExtra("name");
+            String birthyear = data_recevie.getStringExtra("birthyear");
+            String gender = data_recevie.getStringExtra("gender");
+            String mobile = data_recevie.getStringExtra("mobile");
             Intent intent02 = getIntent();
             double latitude = intent02.getDoubleExtra("latitude", 0);
             double longitude = intent02.getDoubleExtra("longitude", 0);
@@ -214,6 +227,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent.putExtra("email", email);
             intent.putExtra("latitude", latitude);
             intent.putExtra("longitude", longitude);
+            intent.putExtra("name", name);
+            intent.putExtra("birthyear", birthyear);
+            intent.putExtra("gender", gender);
+            intent.putExtra("mobile", mobile);
             startActivity(intent);
         }
 
