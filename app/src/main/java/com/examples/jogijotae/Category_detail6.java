@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,9 +19,10 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 
-               /*         구현중        */
+
 public class Category_detail6 extends AppCompatActivity {
     EditText gps_detailtext2;
+    ImageView ivImage;
     private static final String TAG = "Category_detail4";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,10 @@ public class Category_detail6 extends AppCompatActivity {
                                     gps_detailtext2.append("전화번호:  "+document.getString("phone")+"\n\n");
                                     gps_detailtext2.append("소개:  "+document.getString("ex")+"\n")
                                     ;
+
+                                    ivImage=findViewById(R.id.ivImage4);
+                                    String imageUrl =document.getString("image");
+                                    Glide.with(Category_detail6.this).load(imageUrl).into(ivImage);
 
                                 }
                             }

@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,6 +19,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 public class Category_detail2 extends AppCompatActivity {
+    ImageView ivImage;
     EditText category_detailtext;
     private static final String TAG = "Category_detail2";
     @Override
@@ -54,6 +57,9 @@ public class Category_detail2 extends AppCompatActivity {
                                     category_detailtext.append("전화번호:  "+document.getString("phone")+"\n\n");
                                     category_detailtext.append("소개:  "+document.getString("ex")+"\n")
                                     ;
+                                    ivImage=findViewById(R.id.ivImage3);
+                                    String imageUrl =document.getString("image");
+                                    Glide.with(Category_detail2.this).load(imageUrl).into(ivImage);
 
                                 }
                             }

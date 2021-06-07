@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,6 +20,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 public class Interest_detail extends AppCompatActivity {
     private static final String TAG = "Interest_detail";
+    ImageView ivImage;
     TextView interestplacedetail_text;
 
     @Override
@@ -48,6 +51,11 @@ public class Interest_detail extends AppCompatActivity {
                                     interestplacedetail_text.append("전화번호:  "+document.getString("phone")+"\n\n");
                                     interestplacedetail_text.append("소개:  "+document.getString("ex")+"\n")
                                     ;
+
+
+                                    ivImage=findViewById(R.id.ivImage5);
+                                    String imageUrl =document.getString("image");
+                                    Glide.with(Interest_detail.this).load(imageUrl).into(ivImage);
                                 }
                             }
                         } else {

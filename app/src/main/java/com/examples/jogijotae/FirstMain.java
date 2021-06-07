@@ -9,11 +9,13 @@ import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,7 +33,7 @@ public class FirstMain extends AppCompatActivity implements View.OnClickListener
     private static final String TAG = "FirstMain";
 
     Button btn01,btn02,btn03;
-
+ImageView ivImage;
     OAuthLogin mOAuthLoginModule;
     Context mContext;
 
@@ -47,9 +49,9 @@ public class FirstMain extends AppCompatActivity implements View.OnClickListener
     btn01.setOnClickListener(this);
     btn02.setOnClickListener(this);
     btn03.setOnClickListener(this);
-
-
-
+ivImage=findViewById(R.id.iv_image);
+        String imageUrl ="https://firebasestorage.googleapis.com/v0/b/jogijotae-b10e1.appspot.com/o/Resturant_images%2Fjogijotae.PNG?alt=media&token=92964853-6083-48ae-bb76-f2f053d7e609";
+      Glide.with(this).load(imageUrl).into(ivImage);
 
 
 
