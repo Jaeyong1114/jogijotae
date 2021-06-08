@@ -49,7 +49,6 @@ public class Interest_restarant extends AppCompatActivity implements AdapterView
         restarant04 = data_recevie.getStringExtra("restarant04");
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         // DB에서 "Place" 값을 받아옴
         db.collection("Place")

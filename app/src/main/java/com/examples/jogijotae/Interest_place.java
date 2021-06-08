@@ -50,7 +50,6 @@ public class Interest_place extends AppCompatActivity implements AdapterView.OnI
         place06 = data_recevie.getStringExtra("place06");
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         // DB에서 "Place" 값을 받아옴
         db.collection("Place")
