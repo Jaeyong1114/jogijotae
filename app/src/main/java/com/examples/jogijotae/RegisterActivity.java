@@ -68,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity  {
                 String pwdcheck = edit03.getText().toString().trim();
 
 
-                if(pwd.equals(pwdcheck)) {
+                if(pwd.equals(pwdcheck)) {  // 비밀번호와 비밀번호 확인에 값이 같을 시
                     Log.d(TAG, "등록 버튼 " + email + " , " + pwd);
                     final ProgressDialog mDialog = new ProgressDialog(RegisterActivity.this);
                     mDialog.setMessage("가입중입니다...");
