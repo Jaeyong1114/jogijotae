@@ -16,12 +16,9 @@
         android:theme="@style/Theme.MyApplication">
         <activity android:name=".Category_Gps_Res"></activity>
         <activity android:name=".Interest_restarant" />
-
-
         <activity android:name=".Category_Gps_Place" />
         <activity android:name=".Category_GPS_detail" />
         <activity android:name=".FirstMain"/>
-
         <activity android:name=".Category_detail_more" />
         <activity android:name=".Interest_detail" />
         <activity android:name=".Interest_place" />
