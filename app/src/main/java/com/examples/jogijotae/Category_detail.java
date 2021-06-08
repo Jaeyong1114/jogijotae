@@ -13,10 +13,8 @@ import android.widget.ListView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseUser;
 
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -28,9 +26,9 @@ import java.util.List;
 public class Category_detail extends AppCompatActivity implements AdapterView.OnItemClickListener{
 int i = 0; // 포지션에 값을주기위해사용
 
-    private ListView list;
-    private   List<String> data =new ArrayList<>();
-    private static final String TAG = "Category_detail";
+    private ListView list; //리스트뷰 사용
+    private   List<String> data =new ArrayList<>(); //  스트링배열 데이터 만들어서 arrayList 에서 받는값들  데이터에 넣기위해 선언
+    private static final String TAG = "Category_detail"; // 로그찍기위한 태그
 
 String[] newposition = new String[50]; //새로운포지션을 배열로 선언
 
@@ -40,7 +38,7 @@ String[] newposition = new String[50]; //새로운포지션을 배열로 선언
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_detail);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,data);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,data); //리스트뷰 사용위한 ArrayAdapter
         list =findViewById(R.id.listview);
 
         list.setAdapter(adapter);
@@ -48,11 +46,10 @@ String[] newposition = new String[50]; //새로운포지션을 배열로 선언
 
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();                //파이어베이스 접근
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
        Intent receive_data= getIntent();
        String k= receive_data.getStringExtra("k");                     // Category_main 에서 인텐트로 넘긴 카테고리 정보 받아옴
 
-        db.collection("Place")
+        db.collection("Place")                    //데이터베이스에 Place 라는곳을 들어가서  아래조건수행
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -92,7 +89,7 @@ String[] newposition = new String[50]; //새로운포지션을 배열로 선언
 
  /*     위에서 포지션받은것을 다음 동작할 액티비티로 넘겨주면서 액티비티 전환 */
 
-        Intent intent01 = new Intent(Category_detail.this,Category_detail2.class);
+        Intent intent01 = new Intent(Category_detail.this, Category_detail_more.class);
         intent01.putExtra("position",newposition[position]);
         startActivity(intent01);
 

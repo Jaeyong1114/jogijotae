@@ -97,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     if (user == null) {
+                                        Log.d(TAG,"유저가 널이다");
                                         Intent intent01 = getIntent();
                                         double latitude = intent01.getDoubleExtra("latitude", 0);
                                         double longitude = intent01.getDoubleExtra("longitude", 0);
@@ -135,6 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                                                             startToast(email + " 님 환영합니다.");
                                                             finish();
                                                         } else {
+                                                            Log.d(TAG,"유저가 널이다2222");
                                                             Intent intent01 = getIntent();
                                                             double latitude = intent01.getDoubleExtra("latitude", 0);
                                                             double longitude = intent01.getDoubleExtra("longitude", 0);
