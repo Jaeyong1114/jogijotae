@@ -80,8 +80,7 @@ public class Interest_restarant extends AppCompatActivity implements AdapterView
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String[] position2 = new String[50];
-        position2[position] = newposition[position];
+
 
         Intent intent01 = new Intent(Interest_restarant.this, Interest_detail.class);
         intent01.putExtra("position",newposition[position]);

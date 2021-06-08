@@ -25,7 +25,7 @@ public class Category_test extends AppCompatActivity {
         RecyclerViewAdapter recyclerViewAdapter;
 
 
-
+    /* 장소의 거리들을 비교하여 정렬하기위해 사용 */
     private final static Comparator<Person> sortByTotalCall = new Comparator<Person>() {
 
         @Override
@@ -38,6 +38,7 @@ public class Category_test extends AppCompatActivity {
 
 
 
+    /*첫번 째 지점 (위도,경도) 에서 두번째 지점(위도,경도) 까지의 거리계산 함수 생성 */
 
     private double distance(double lat1, double lon1, double lat2, double lon2 ) {
         double theta = lon1 - lon2;
@@ -61,12 +62,6 @@ public class Category_test extends AppCompatActivity {
         return (rad / Math.PI * 180.0) ;
     }
 
-// 거리계산
-
-
-
-    //change
-
 
 
 
@@ -76,7 +71,7 @@ public class Category_test extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_category_test);
 
-            //activity_main.xml의 recyclerview id
+
             recyclerView = findViewById(R.id.recyclerView);
             linearLayoutManager = new LinearLayoutManager(this);
 
@@ -97,8 +92,8 @@ public class Category_test extends AppCompatActivity {
 
 
 
-Log.d(TAG,"내위치는"+latitude+","+longitude);
-            // ArrayList에 person 객체(이름과 번호) 넣기
+Log.d(TAG,"내위치는"+latitude+","+longitude); // 사용자의 위치 잘받아오는지 로그 확인
+           /* Arraylist에 들어갈 음식점 데이터(이름,거리) 넣기 */
             List<Person> person = new ArrayList<>();
             person.add(new Person("화덕 고깃간", distance(latitude,longitude,37.51503457185153,127.0809924799709),37.51503457185153,127.0809924799709));
             person.add(new Person("오쓰세이로무시", distance(latitude,longitude,37.510456219235586,127.10848473837537),37.510456219235586,127.10848473837537));
@@ -128,7 +123,7 @@ Log.d(TAG,"내위치는"+latitude+","+longitude);
             person.add(new Person("차이나플레인", distance(latitude,longitude,37.5048039,127.0508334),37.5048039,127.0508334));
             person.add(new Person("일일향 잠실점", distance(latitude,longitude,37.5110741,127.1095527),37.5110741,127.1095527));
 
-
+        /*거리순 정렬 */
             Collections.sort(person,sortByTotalCall);
 
 

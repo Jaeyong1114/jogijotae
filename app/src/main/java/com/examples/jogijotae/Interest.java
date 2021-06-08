@@ -1,13 +1,13 @@
 package com.examples.jogijotae;
-
+/* 사용자의 취향과 정보를 받기위한 클래스 생성 */
 public class Interest {
-    String place01, place02, place03, place04, place05, place06;
-    String restarant01, restarant02,restarant03, restarant04;
-    String name;
-    String gender;
-    String birthyear;
-    String mobile;
-    String email;
+    String place01, place02, place03, place04, place05, place06; //관광지 취향
+    String restarant01, restarant02,restarant03, restarant04; // 맛집 취향
+    String name;  // 사용자 이름
+    String gender; // 사용자 성별
+    String birthyear; // 사용자 생년
+    String mobile; // 사용자 휴대전화번호
+    String email; // 사용자 이메일
 
     public Interest() {}
 

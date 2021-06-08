@@ -20,8 +20,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 public class Interest_detail extends AppCompatActivity {
     private static final String TAG = "Interest_detail";
-    ImageView ivImage;
-    TextView interestplacedetail_text;
+    ImageView ivImage; // 이미지를 보여주기 위해 이미지뷰 선언
+    TextView interestplacedetail_text;  //
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

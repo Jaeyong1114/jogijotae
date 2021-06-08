@@ -110,6 +110,7 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
 
 
                         if(!TextUtils.isEmpty(data_recevie.getStringExtra("check"))) { //인텐트로 받아온 체크에 값이 있을경우
+
                             startToast("회원정보 수정을 완료하였습니다.");
 
 

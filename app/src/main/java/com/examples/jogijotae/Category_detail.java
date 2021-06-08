@@ -38,13 +38,6 @@ String[] newposition = new String[50]; //새로운포지션을 배열로 선언
     protected void onCreate(Bundle savedInstanceState) {
 
 
-
-
-
-
-
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_detail);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,data);
@@ -54,19 +47,10 @@ String[] newposition = new String[50]; //새로운포지션을 배열로 선언
         list.setOnItemClickListener(this);
 
 
-
-
-
-
-
-
-        //text01 = findViewById(R.id.restaurantmain_text);
-
-        // divi = new ArrayList<String>();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();                //파이어베이스 접근
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
        Intent receive_data= getIntent();
-       String k= receive_data.getStringExtra("k");
+       String k= receive_data.getStringExtra("k");                     // Category_main 에서 인텐트로 넘긴 카테고리 정보 받아옴
 
         db.collection("Place")
                 .get()
@@ -79,14 +63,12 @@ String[] newposition = new String[50]; //새로운포지션을 배열로 선언
 
 
 
-
                                 if ((document.getString("category").equals(""+k+""))  ||(document.getString("category2").equals(""+k+""))
                                         ||document.getString("category3").equals(""+k+"")){
-                                    data.add (document.getString("name"));
+                                    data.add (document.getString("name"));          //  Category_main 에서 인텐트로 받아온값으로 맞는 카테고리에 데이터베이스 리스트뷰에 넣음
 
-                                    newposition[i++]=document.getString("position");
-                                    Log.d(TAG,"테스트"+newposition);
-
+                                    newposition[i++]=document.getString("position");        // 각 리스트뷰에 아이템들을 사용하기위해 해당 포지션을 배열에 넣어줌
+                                    Log.d(TAG,"테스트"+newposition);                      // 포지션 잘불러왔는지 테스트 로그
 
 
                                     adapter.notifyDataSetChanged();
@@ -103,18 +85,13 @@ String[] newposition = new String[50]; //새로운포지션을 배열로 선언
 
 
 
-
-
-
-
-
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+ /*     위에서 포지션받은것을 다음 동작할 액티비티로 넘겨주면서 액티비티 전환 */
 
-        Log.d(TAG,"테스트2"+newposition[position]);
         Intent intent01 = new Intent(Category_detail.this,Category_detail2.class);
         intent01.putExtra("position",newposition[position]);
         startActivity(intent01);

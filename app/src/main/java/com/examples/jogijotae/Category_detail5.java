@@ -27,7 +27,7 @@ public class Category_detail5 extends AppCompatActivity {
     RecyclerViewAdapter recyclerViewAdapter;
 
 
-
+    /* 장소의 거리들을 비교하여 정렬하기위해 사용 */
     private final static Comparator<Person> sortByTotalCall = new Comparator<Person>() {
 
         @Override
@@ -40,7 +40,7 @@ public class Category_detail5 extends AppCompatActivity {
 
 
 
-
+    /*첫번 째 지점 (위도,경도) 에서 두번째 지점(위도,경도) 까지의 거리계산 함수 생성 */
     private double distance(double lat1, double lon1, double lat2, double lon2 ) {
         double theta = lon1 - lon2;
         double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) +
@@ -63,11 +63,10 @@ public class Category_detail5 extends AppCompatActivity {
         return (rad / Math.PI * 180.0) ;
     }
 
-// 거리계산
 
 
 
-    //change
+
 
 
 
