@@ -47,10 +47,10 @@ public class Interest_restarant extends AppCompatActivity implements AdapterView
         restarant02 = data_recevie.getStringExtra("restarant02");
         restarant03 = data_recevie.getStringExtra("restarant03");
         restarant04 = data_recevie.getStringExtra("restarant04");
-        String email = data_recevie.getStringExtra("email");
+
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
 
         db.collection("Place")
                 .get()

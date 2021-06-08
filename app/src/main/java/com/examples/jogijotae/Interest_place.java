@@ -48,10 +48,10 @@ public class Interest_place extends AppCompatActivity implements AdapterView.OnI
         place04 = data_recevie.getStringExtra("place04");
         place05 = data_recevie.getStringExtra("place05");
         place06 = data_recevie.getStringExtra("place06");
-        String email = data_recevie.getStringExtra("email");
+
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
 
         db.collection("Place")
                 .get()
