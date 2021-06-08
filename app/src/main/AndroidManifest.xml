@@ -20,7 +20,6 @@
         <activity android:name=".Category_GPS_detail" />
         <activity android:name=".FirstMain"/>
         <activity android:name=".Category_detail_more" />
-        <activity android:name=".Interest_detail" />
         <activity android:name=".Interest_place" />
         <activity android:name=".Category_detail" />
         <activity android:name=".Place_detail" />

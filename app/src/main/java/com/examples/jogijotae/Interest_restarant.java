@@ -81,8 +81,8 @@ public class Interest_restarant extends AppCompatActivity implements AdapterView
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
-        Intent intent01 = new Intent(Interest_restarant.this, Interest_detail.class);
-        intent01.putExtra("position",newposition[position]); // 클릭한 음식점 정보를 출력하기위해 클릭한 음식점 position값을 담아서 Interest_detail 실행
+        Intent intent01 = new Intent(Interest_restarant.this, Place_detail.class);
+        intent01.putExtra("position",newposition[position]); // 클릭한 음식점 정보를 출력하기위해 클릭한 음식점 position값을 담아서 Place_detail 실행
         startActivity(intent01);
     }
 }

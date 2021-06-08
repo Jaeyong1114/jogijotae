@@ -83,8 +83,8 @@ public class Interest_place extends AppCompatActivity implements AdapterView.OnI
 
     @Override // 리스트뷰 아이템이 클릭 되었을시
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent01 = new Intent(Interest_place.this, Interest_detail.class);
-        intent01.putExtra("position",newposition[position]); // 클릭한 관광지 정보를 출력하기위해 클릭한 관광지 position값을 담아서 Interest_detail 실행
+        Intent intent01 = new Intent(Interest_place.this, Place_detail.class);
+        intent01.putExtra("position",newposition[position]); // 클릭한 관광지 정보를 출력하기위해 클릭한 관광지 position값을 담아서 Place_detail 실행
         startActivity(intent01);
     }
 }
