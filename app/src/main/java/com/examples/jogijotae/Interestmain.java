@@ -39,9 +39,6 @@ public class Interestmain extends AppCompatActivity implements View.OnClickListe
             String place04 = data_recevie.getStringExtra("place04");
             String place05 = data_recevie.getStringExtra("place05");
             String place06 = data_recevie.getStringExtra("place06");
-            String name = data_recevie.getStringExtra("name");
-
-
 
             Intent interest_place = new Intent(Interestmain.this, Interest_place.class);
             interest_place.putExtra("latitude", latitude);
@@ -52,8 +49,7 @@ public class Interestmain extends AppCompatActivity implements View.OnClickListe
             interest_place.putExtra("place04", place04);
             interest_place.putExtra("place05", place05);
             interest_place.putExtra("place06", place06);
-            interest_place.putExtra("name", name);
-            startActivity(interest_place);
+            startActivity(interest_place); // 유저의 관광지 취향정보를 넘기면서 Interest_place로 이동
         }
         if (v.getId() == R.id.interest_btn_res)
         {
@@ -65,7 +61,6 @@ public class Interestmain extends AppCompatActivity implements View.OnClickListe
             String restarant02 = data_recevie.getStringExtra("restarant02");
             String restarant03 = data_recevie.getStringExtra("restarant03");
             String restarant04 = data_recevie.getStringExtra("restarant04");
-            String name = data_recevie.getStringExtra("name");
 
 
 
@@ -76,9 +71,8 @@ public class Interestmain extends AppCompatActivity implements View.OnClickListe
             interest_res.putExtra("restarant02", restarant02);
             interest_res.putExtra("restarant03", restarant03);
             interest_res.putExtra("restarant04", restarant04);
-            interest_res.putExtra("name", name);
 
-            startActivity(interest_res);
+            startActivity(interest_res); // 유저의 음식점 취향정보를 넘기면서 Interest_restarant로 이동
         }
     }
 }

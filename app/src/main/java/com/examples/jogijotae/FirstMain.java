@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -60,12 +59,12 @@ ivImage=findViewById(R.id.iv_image);
 
     @Override
     public void onClick(View v) {
-        if (v.getId()== R.id.button) {
+        if (v.getId()== R.id.button) { // 네이버 로그인 버튼 클릭시
 
 
             mOAuthLoginModule = OAuthLogin.getInstance();
             mOAuthLoginModule.init(
-                    mContext
+                    mContext // 네아로로그인 사용하기 위해 토큰 아이디, 패스워드 입력
                     ,getString(R.string.naver_client_id)
                     ,getString(R.string.naver_client_secret)
                     ,getString(R.string.naver_client_name)
@@ -104,13 +103,7 @@ ivImage=findViewById(R.id.iv_image);
             mOAuthLoginModule.startOauthLoginActivity(FirstMain.this, mOAuthLoginHandler);
         }
 
-        if(v.getId()==R.id.button2){
-            Intent data_recevie = getIntent();
-
-            String name = data_recevie.getStringExtra("name");
-            String birthyear = data_recevie.getStringExtra("birthyear");
-            String gender = data_recevie.getStringExtra("gender");
-            String mobile = data_recevie.getStringExtra("mobile");
+        if(v.getId()==R.id.button2){ // 로그인하기 버튼 클릭시 로그인 액티비티로 이동
             Intent intent = getIntent();
             double latitude = intent.getDoubleExtra("latitude", 0);
             double longitude = intent.getDoubleExtra("longitude", 0);
@@ -118,13 +111,9 @@ ivImage=findViewById(R.id.iv_image);
             Intent intent01 = new Intent(this, LoginActivity.class);
             intent01.putExtra("latitude", latitude);
             intent01.putExtra("longitude", longitude);
-            intent01.putExtra("name",name);
-            intent01.putExtra("birthyear",birthyear);
-            intent01.putExtra("gender",gender);
-            intent01.putExtra("mobile",mobile);
             startActivity(intent01);
         }
-        if(v.getId()==R.id.button3){
+        if(v.getId()==R.id.button3){ // 회원가입 할 수 있는 RegisterActivity로 이동
             Intent intent02 = new Intent(this, RegisterActivity.class);
             Intent intent = getIntent();
             double latitude = intent.getDoubleExtra("latitude", 0);
@@ -159,7 +148,7 @@ ivImage=findViewById(R.id.iv_image);
             try {
                 JSONObject loginResult = new JSONObject(content);
                 if (loginResult.getString("resultcode").equals("00")){
-                    JSONObject response = loginResult.getJSONObject("response");
+                    JSONObject response = loginResult.getJSONObject("response"); // 네이버에서 제공하는 유저 name, email, gender, birthyear, mobile 값 을 받음
                     String name = response.getString("name");
                     String email = response.getString("email");
                     String gender = response.getString("gender");
@@ -175,7 +164,7 @@ ivImage=findViewById(R.id.iv_image);
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.isSuccessful()) {
                                 DocumentSnapshot document = task.getResult();
-                                if (document != null) {
+                                if (document != null) { // 네이버로그인한 유저 정보가 데이터베이스에 있을시
                                     if (document.exists()) {
                                         Log.d(TAG, "DocumentSnapshot data:" + document.getData());
                                        Intent intent01 = getIntent();
@@ -187,15 +176,13 @@ ivImage=findViewById(R.id.iv_image);
                                         intent.putExtra("birthyear",birthyear);
                                         intent.putExtra("gender",gender);
                                         intent.putExtra("mobile",mobile);
-
                                         intent.putExtra("latitude", latitude);
                                         intent.putExtra("longitude", longitude);
                                         startToast(email + " 님 환영합니다.");
                                         intent.putExtra("email", email);
                                         Log.d(TAG,"내위치는"+latitude+","+longitude);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
+                                        startActivity(intent); // 어떤 유저가 로그인 했는지 확인하기 위해 name, birthyear, gender, mobile, email 값을 넘기면서 MainActivity로 이동
+                                    } else { // 네이버로그인한 유저정보가 데이터베이스에 없을시
                                         Log.d(TAG, "No such document");
                                         Intent intent01 = getIntent();
                                         double latitude = intent01.getDoubleExtra("latitude", 0);
@@ -209,7 +196,7 @@ ivImage=findViewById(R.id.iv_image);
                                         interestCheck.putExtra("birthyear", birthyear);
                                         interestCheck.putExtra("mobile", mobile);
                                         Log.d(TAG,"내위치는"+latitude+","+longitude);
-                                        startActivity(interestCheck);
+                                        startActivity(interestCheck); // 유저에 기본정보를 저장하기 위해 name, birthyear, gender, mobile, email 값을 넘기면서 취향을 선택할 수 있는 interstCheck로 이동
                                     }
                                 } else {
                                     Log.d(TAG, "get failed with", task.getException());

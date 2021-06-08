@@ -56,46 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        Intent data_recevie = getIntent();
-        String email = data_recevie.getStringExtra("email");
-        String name =data_recevie.getStringExtra("name");
-        String gender=data_recevie.getStringExtra("gender");
-        String mobile=data_recevie.getStringExtra("mobile");
-        String birthyear = data_recevie.getStringExtra("birthyear");
-        if (email.contains("naver")) {
-            Intent intent02 = getIntent();
-            double latitude = intent02.getDoubleExtra("latitude", 0);
-            double longitude = intent02.getDoubleExtra("longitude", 0);
-            Intent intent = new Intent(MainActivity.this, FirstMain.class);
-            startToast("네이버 로그아웃 되었습니다.");
-            mOAuthLoginModule.getInstance().logout(mContext);
-            intent.putExtra("latitude", latitude);
-            intent.putExtra("longitude", longitude);
-            startActivity(intent);
-            finish();
-        }
-        else {
-            Intent intent02 = getIntent();
-            double latitude = intent02.getDoubleExtra("latitude", 0);
-            double longitude = intent02.getDoubleExtra("longitude", 0);
-            Intent intent = new Intent(MainActivity.this, FirstMain.class);
-            intent.putExtra("latitude", latitude);
-            intent.putExtra("longitude", longitude);
-            intent.putExtra("gender",gender);
-            intent.putExtra("mobile", mobile);
-            intent.putExtra("birthyear",birthyear);
-            intent.putExtra("name", name);
-            startToast("로그아웃 되었습니다.");
-            startActivity(intent);
-            finish();
-        }
-    }
-
-    @Override
-    public void onClick(View v) {
+    public void onClick(View v) { // 관광지 추천을 받을수 있는 Placemain으로 이동
         if(v.getId()==R.id.place_btn) {
             Intent intent01 = new Intent(this, Placemain.class);
             Intent intent02 = getIntent();
@@ -105,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent01.putExtra("longitude", longitude);
             startActivity(intent01);
         }
-        if(v.getId()==R.id.res_btn) {
+        if(v.getId()==R.id.res_btn) { // 음식점 추천을 받을수 있는 restaurantmain으로 이동
                 Intent intent01 = new Intent(this, Restaurantmain.class);
             Intent intent02 = getIntent();
             double latitude = intent02.getDoubleExtra("latitude", 0);
@@ -114,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent01.putExtra("longitude", longitude);
                 startActivity(intent01);
             }
-        if(v.getId()==R.id.category_btn) {
+        if(v.getId()==R.id.category_btn) { // 카테고리별 검색을 할 수 있는 Categorymain으로 이동
             Intent intent01 = new Intent(this, Categorymain.class);
             Intent intent02 = getIntent();
             double latitude = intent02.getDoubleExtra("latitude", 0);
@@ -132,19 +93,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent02 = getIntent();
             double latitude = intent02.getDoubleExtra("latitude", 0);
             double longitude = intent02.getDoubleExtra("longitude", 0);
-
+            // 개인 취향을 받기위해 DB에 접근할 수 있는 유저의 email값을 받아옴
             String email = data_recevie.getStringExtra("email");
-            String name = data_recevie.getStringExtra("name");
-            String birthyear = data_recevie.getStringExtra("birthyear");
-            String gender = data_recevie.getStringExtra("gender");
-            String mobile = data_recevie.getStringExtra("mobile");
 
+            // users에 있는 데이터들을 받음
             db.collection("users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
-
+                            // useres의 email이 현재 로그인한 유저의 email과 값고 그 유저의 취향 값이 존재하면 받아서 각각의 변수의 대입한다.
                             if ((document.getString("place01").equals("가족여행")) && (document.getString("email").equals(""+email+""))){
                                 place01 = "가족여행";
                             }
@@ -193,40 +151,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     intent01.putExtra("restarant02", restarant02);
                     intent01.putExtra("restarant03", restarant03);
                     intent01.putExtra("restarant04", restarant04);
-                    intent01.putExtra("email", email);
-                    intent01.putExtra("name", name);
-                    intent01.putExtra("birthyear", birthyear);
-                    intent01.putExtra("gender", gender);
-                    intent01.putExtra("mobile", mobile);
 
-                    startActivity(intent01);
+                    startActivity(intent01); // 로그인한 유저의 취향정보를 담아서 Interestmain으로 이동
                 }
 
             });
 
         }
-        if (v.getId() == R.id.main_btn_logout) {
+        if (v.getId() == R.id.main_btn_logout) { // 로그아웃 버튼 눌렀을시
             Intent data_recevie = getIntent();
             String email = data_recevie.getStringExtra("email");
-            String name = data_recevie.getStringExtra("name");
-            String birthyear = data_recevie.getStringExtra("birthyear");
-            String gender = data_recevie.getStringExtra("gender");
-            String mobile = data_recevie.getStringExtra("mobile");
 
-            if (email.contains("naver")) {
-
-
-
+            if (email.contains("naver")) { // 유저가 네이버로 로그인 한건지 확인하기 위해 email에 "naver"라는 문자열이 있는지 여부 확인
                 Intent intent02 = getIntent();
                 double latitude = intent02.getDoubleExtra("latitude", 0);
                 double longitude = intent02.getDoubleExtra("longitude", 0);
                 Intent intent = new Intent(MainActivity.this, FirstMain.class);
                 startToast("네이버 로그아웃 되었습니다.");
-                mOAuthLoginModule.getInstance().logout(mContext);
+                mOAuthLoginModule.getInstance().logout(mContext); // 네이버 토큰 삭제
                 intent.putExtra("latitude", latitude);
                 intent.putExtra("longitude", longitude);
 
-                startActivity(intent);
+                startActivity(intent); // FristMain으로 이동
                 finish();
             }
             else {
@@ -237,16 +183,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startToast("로그아웃 되었습니다.");
                 intent.putExtra("latitude", latitude);
                 intent.putExtra("longitude", longitude);
-                intent.putExtra("name",name);
-                intent.putExtra("birthyear",birthyear);
-                intent.putExtra("gender",gender);
-                intent.putExtra("mobile",mobile);
-                startActivity(intent);
+                startActivity(intent); // FirstMain으로 이동
                 finish();
             }
         }
         if (v.getId() == R.id.main_btn_infoChange) {
             Intent data_recevie = getIntent();
+            // 유저취향을 변경할때 어느유저가 취향을 변경하는지 확인하고 유저의 값이 null값이 되지않게 하기위해 유저의 기본정보를 넘겨줘야해서 유저의 기본정보 값을 받음
             String email = data_recevie.getStringExtra("email");
             String name = data_recevie.getStringExtra("name");
             String birthyear = data_recevie.getStringExtra("birthyear");
@@ -265,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent.putExtra("birthyear", birthyear);
             intent.putExtra("gender", gender);
             intent.putExtra("mobile", mobile);
-            startActivity(intent);
+            startActivity(intent); // 취향을 변경할 유저의 정보를 확인하기 위해 유저의 기본정보를 넘기면서 User_interest로 이동
         }
 
     }

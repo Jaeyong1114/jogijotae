@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         edit01 = findViewById(R.id.et_id);
         edit02 = findViewById(R.id.et_pw);
 
-        //가입 버튼이 눌리면
+        // 회원가입이 눌리면
         Registertxt.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -56,11 +56,11 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent02 = new Intent(LoginActivity.this, RegisterActivity.class);
                 intent02.putExtra("latitude", latitude);
                 intent02.putExtra("longitude", longitude);
-                startActivity(intent02);
+                startActivity(intent02); // 일반유저가 회원가입 할 수 있는 RegisterActivity로 이동
             }
         });
 
-
+        // 비밀번호 재설정이 눌리면
         PWreset.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent02=new Intent(LoginActivity.this, password_reset.class);
                 intent02.putExtra("latitude", latitude);
                 intent02.putExtra("longitude", longitude);
-                startActivity(intent02);
+                startActivity(intent02); // 비밀번호를 재설정 할 수 있는 password_reset로 이동
             }
         });
 
@@ -84,40 +84,30 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = edit01.getText().toString().trim();
                 String pwd = edit02.getText().toString().trim();
-                Intent data_recevie = getIntent();
-
-                String name = data_recevie.getStringExtra("name");
-                String birthyear = data_recevie.getStringExtra("birthyear");
-                String gender = data_recevie.getStringExtra("gender");
-                String mobile = data_recevie.getStringExtra("mobile");
 
                 firebaseAuth.signInWithEmailAndPassword(email, pwd)
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    if (user == null) {
+                                    if (user == null) { // 데이터베이스에 유저에 정보가 등록이 되어있지 않다면
                                         Intent intent01 = getIntent();
                                         double latitude = intent01.getDoubleExtra("latitude", 0);
                                         double longitude = intent01.getDoubleExtra("longitude", 0);
                                         Intent intent = new Intent(LoginActivity.this, Userinformation.class);
                                         intent.putExtra("latitude", latitude);
                                         intent.putExtra("longitude", longitude);
-                                        intent.putExtra("name",name);
-                                        intent.putExtra("birthyear",birthyear);
-                                        intent.putExtra("gender",gender);
-                                        intent.putExtra("mobile",mobile);
                                         startActivity(intent);
-                                        finish();
+                                        finish(); // 유저의 기본정보를 작성하는 Userinformation 으로 이동
                                     } else {
                                         FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                        DocumentReference docRef = db.collection("users").document(user.getEmail());
+                                        DocumentReference docRef = db.collection("users").document(user.getEmail()); // 유저의 이메일 값을 가져옴
                                         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                             @Override
                                             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                                 if (task.isSuccessful()) {
                                                     DocumentSnapshot document = task.getResult();
-                                                    if (document != null) {
+                                                    if (document != null) { // 유저의 정보가 데이터베이스에 존재한다면
                                                         if (document.exists()) {
                                                             Intent intent01 = getIntent();
                                                             double latitude = intent01.getDoubleExtra("latitude", 0);
@@ -126,14 +116,11 @@ public class LoginActivity extends AppCompatActivity {
                                                             Intent intent = new Intent(LoginActivity.this,  MainActivity.class);
                                                             intent.putExtra("latitude", latitude);
                                                             intent.putExtra("longitude", longitude);
-                                                            intent01.putExtra("name",name);
-                                                            intent01.putExtra("birthyear",birthyear);
-                                                            intent01.putExtra("gender",gender);
-                                                            intent01.putExtra("mobile",mobile);
-                                                            intent.putExtra("email", email);
+                                                            intent.putExtra("email", email); // 어느 유저가 로그인 했는지 확인하기 위해 email 값을 넘겨줌
                                                             startActivity(intent);
                                                             startToast(email + " 님 환영합니다.");
-                                                            finish();
+                                                            finish(); // MainActivity로 이동
+
                                                         } else {
                                                             Intent intent01 = getIntent();
                                                             double latitude = intent01.getDoubleExtra("latitude", 0);
@@ -142,10 +129,6 @@ public class LoginActivity extends AppCompatActivity {
                                                             Intent intent = new Intent(LoginActivity.this, Userinformation.class);
                                                             intent.putExtra("latitude", latitude);
                                                             intent.putExtra("longitude", longitude);
-                                                            intent01.putExtra("name",name);
-                                                            intent01.putExtra("birthyear",birthyear);
-                                                            intent01.putExtra("gender",gender);
-                                                            intent01.putExtra("mobile",mobile);
                                                             startActivity(intent);
                                                             finish();
                                                         }

@@ -52,7 +52,7 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        Intent data_recevie = getIntent();
+        Intent data_recevie = getIntent(); // // 디비에 저장해야할 유저의 기본정보 값을 받음 or 취향정보를 변경할 때 데이터베이스에 기본 유저정보값이 null 값으로 바뀌지 않게 하기 위해 기본 유저 정보 값을 받음
 
         String email = data_recevie.getStringExtra("email");
         String name = data_recevie.getStringExtra("name");
@@ -64,7 +64,7 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
         String place01 = "", place02 = "", place03 = "", place04 = "", place05 = "", place06 = "",
                 restarant01 = "", restarant02 = "", restarant03 = "", restarant04 = "";
 
-        if (UI_check_place01.isChecked()) {
+        if (UI_check_place01.isChecked()) { // 체크박스가 체크되어 있으면 값을 넣는다
             place01 = UI_check_place01.getText().toString();
         }
         if (UI_check_place02.isChecked()) {
@@ -96,7 +96,8 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
         }
 
         Interest Interest = new Interest(place01, place02, place03, place04, place05, place06, restarant01, restarant02, restarant03, restarant04, name, gender, birthyear, mobile,email);
-        db.collection("users").document(email).set(Interest)
+        // Interest 메소드에 데이터베이스에 들어갈 유저의 값을 세팅한다
+        db.collection("users").document(email).set(Interest)// 데이터베이스에 "useres"에 현재 받아온 email 정보에 Interest에 있는 유저의 기본 정보 값을 넣어서 등록한다.
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
 
                     @Override
@@ -109,12 +110,10 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
 
 
 
-                        if(!TextUtils.isEmpty(data_recevie.getStringExtra("check"))) { //인텐트로 받아온 체크에 값이 있을경우
+                        if(!TextUtils.isEmpty(data_recevie.getStringExtra("check"))) { //인텐트로 받아온 체크에 값이 있을경우(회원정보를 수정 한 경우)
 
                             startToast("회원정보 수정을 완료하였습니다.");
 
-
-
                             Intent intent = new Intent(User_interest.this, MainActivity.class);
                             intent.putExtra("latitude", latitude);
                             intent.putExtra("longitude", longitude);
@@ -123,11 +122,11 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
                             intent.putExtra("birthyear", birthyear);
                             intent.putExtra("gender", gender);
                             intent.putExtra("mobile", mobile);
-                            startActivity(intent);
+                            startActivity(intent); // 유저의 기본정보 값과 함께 MainActivity로 이동
                             finish();
                         }
                         else {
-                            startToast("회원정보 등록을 완료하였습니다."); //인텐트로 받아온 체크에 값이 없을경우 (처음 등록하는경우)
+                            startToast("회원정보 등록을 완료하였습니다."); //회원등록 (처음 등록하는경우)
                             Intent intent = new Intent(User_interest.this, MainActivity.class);
 
                             intent.putExtra("latitude", latitude);
@@ -138,7 +137,7 @@ public class User_interest extends AppCompatActivity implements View.OnClickList
                             intent.putExtra("gender", gender);
                             intent.putExtra("mobile", mobile);
 
-                            startActivity(intent);
+                            startActivity(intent); // 유저의 기본정보 값과 함께 MainActivity로 이동
                             finish();
                         }
                     }

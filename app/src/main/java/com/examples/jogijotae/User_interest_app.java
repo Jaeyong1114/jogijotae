@@ -55,7 +55,7 @@ public class User_interest_app extends AppCompatActivity implements View.OnClick
 
         Intent data_receive = getIntent();
 
-
+        // 디비에 저장해야할 유저의 기본정보 값을 받음
         String name = data_receive.getStringExtra("name");
         String birthyear = data_receive.getStringExtra("birthyear");
         String gender = data_receive.getStringExtra("gender");
@@ -68,7 +68,7 @@ public class User_interest_app extends AppCompatActivity implements View.OnClick
                 restarant01 = "", restarant02 = "", restarant03 = "", restarant04 = "";
 
 
-
+        // 체크박스가 체크되어 있으면 값을 넣는다
         if (UI_check_place01.isChecked()) {
             place01 = UI_check_place01.getText().toString();
         }
@@ -104,9 +104,9 @@ public class User_interest_app extends AppCompatActivity implements View.OnClick
         }
 
 
-
+        // Interest 메소드에 데이터베이스에 들어갈 유저의 값을 세팅한다
         Interest Interest = new Interest(place01, place02, place03, place04,place05,place06, restarant01, restarant02, restarant03, restarant04, name, gender, birthyear, mobile,email);
-        db.collection("users").document(user.getEmail()).set(Interest)
+        db.collection("users").document(user.getEmail()).set(Interest) // 데이터베이스에 "useres"에 현재 받아온 email 정보에 Interest에 있는 유저의 기본 정보 값을 넣어서 등록한다.
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
 
                     @Override
@@ -123,7 +123,7 @@ public class User_interest_app extends AppCompatActivity implements View.OnClick
                         intent.putExtra("name",name);
                         intent.putExtra("birthyear",birthyear);
                         intent.putExtra("mobile",mobile);
-                        startActivity(intent);
+                        startActivity(intent);  // 유저의 기본정보 값과 함께 MainActivity로 이동
                         finish();
                     }
                 })
