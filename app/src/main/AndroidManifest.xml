@@ -14,16 +14,15 @@
         android:roundIcon="@mipmap/jogijotae_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".Category_test"></activity>
+        <activity android:name=".Category_Gps_Res"></activity>
         <activity android:name=".Interest_restarant" />
-        <activity android:name=".Category_detail6" />
 
 
-        <activity android:name=".Category_detail5" />
-        <activity android:name=".Category_detail4" />
+        <activity android:name=".Category_Gps_Place" />
+        <activity android:name=".Category_GPS_detail" />
         <activity android:name=".FirstMain"/>
 
-        <activity android:name=".Category_detail2" />
+        <activity android:name=".Category_detail_more" />
         <activity android:name=".Interest_detail" />
         <activity android:name=".Interest_place" />
         <activity android:name=".Category_detail" />

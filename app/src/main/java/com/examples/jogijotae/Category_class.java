@@ -2,14 +2,14 @@ package com.examples.jogijotae;
 
 
 
-public class Person {       //리사이클러뷰(GPS 사용 카테고리 리스트뷰) 사용하기위한 클래스 생성
+public class Category_class {       //리사이클러뷰(GPS 사용 카테고리 리스트뷰) 사용하기위한 클래스 생성
 
     double direction; //거리
     String name; //가게 이름
     double lati; //위도
     double longi; //경도
 
-    public Person(String name,double direction,double lati,double longi) {
+    public Category_class(String name, double direction, double lati, double longi) {
         this.direction = direction;
         this.name = name;
         this.lati =lati;

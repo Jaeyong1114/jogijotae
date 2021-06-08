@@ -160,8 +160,8 @@ public class SplashActivity extends AppCompatActivity {
 /* 처음시작시 사용자의 위도 경도를 받고 FirstMain 으로 액티비티 전환 */
                 Intent intent = new Intent(SplashActivity.this, FirstMain.class);
 
-                intent.putExtra("latitude", latitude);
-                intent.putExtra("longitude", longitude);
+                intent.putExtra("latitude", latitude); //사용자의 위도를 인텐트로 보내줌
+                intent.putExtra("longitude", longitude); //사용자의 경도를 인텐트로 보내줌
                 startActivity(intent);
                 finish();
 
