@@ -27,7 +27,6 @@
         <activity android:name=".Interest_place" />
         <activity android:name=".Category_detail" />
         <activity android:name=".Place_detail" />
-        <activity android:name=".Restaurant_detail" />
         <activity android:name=".Interestmain" />
         <activity android:name=".Categorymain" />
         <activity android:name=".Restaurantmain" />

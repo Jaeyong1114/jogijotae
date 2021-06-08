@@ -30,14 +30,14 @@ public class Category_detail_more extends AppCompatActivity {
 
 
         //Place 데이터베이스 접근
-        db.collection("Place")          //데이터베이스에 Place 라는곳을 들어가서  아래조건수행
+        db.collection("Place")          //데이터베이스에 Place 라는곳에 접근   아래조건수행
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         Intent data_receive = getIntent();
 
-                        String position = data_receive.getStringExtra("position"); // position 이라는 변수에 데이터베이스에서 받은 포지션을 받아서 각 위치 확인
+                        String position = data_receive.getStringExtra("position"); // position 이라는 변수에 인텐트로 받은 포지션을 받아서 각 위치 확인
                         Log.d(TAG,"이거는"+position); // 포지션 잘받아오는지확인하기위한 로그
 
 

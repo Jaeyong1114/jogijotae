@@ -30,6 +30,7 @@ import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 /* 사용자의 위치정보(위도, 경도 ) 를 받기위해 */
+
 public class SplashActivity extends AppCompatActivity {
     private static final String TAG = SplashActivity.class.getSimpleName();
     private static final int GPS_UTIL_LOCATION_PERMISSION_REQUEST_CODE = 100;

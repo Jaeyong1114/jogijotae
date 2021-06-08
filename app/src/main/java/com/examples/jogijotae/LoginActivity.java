@@ -113,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                                                             double latitude = intent01.getDoubleExtra("latitude", 0);
                                                             double longitude = intent01.getDoubleExtra("longitude", 0);
                                                             Log.d(TAG, "DocumentSnapshot data:" + document.getData());
-                                                            Intent intent = new Intent(LoginActivity.this,  MainActivity.class);
+                                                            Intent intent = new Intent(LoginActivity.this,  MainActivity.class); // 데이터베이스에 정상적으로 유저의 정보가 있으므로 메인으로 넘어감
                                                             intent.putExtra("latitude", latitude);
                                                             intent.putExtra("longitude", longitude);
                                                             intent.putExtra("email", email); // 어느 유저가 로그인 했는지 확인하기 위해 email 값을 넘겨줌
@@ -126,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
                                                             double latitude = intent01.getDoubleExtra("latitude", 0);
                                                             double longitude = intent01.getDoubleExtra("longitude", 0);
                                                             Log.d(TAG, "No such document");
-                                                            Intent intent = new Intent(LoginActivity.this, Userinformation.class);
+                                                            Intent intent = new Intent(LoginActivity.this, Userinformation.class); // 유저의 정보를 입력받기위해 Userinformation 으로 전환
                                                             intent.putExtra("latitude", latitude);
                                                             intent.putExtra("longitude", longitude);
                                                             startActivity(intent);
@@ -140,7 +140,7 @@ public class LoginActivity extends AppCompatActivity {
                                         });
                                     }
                                 } else {
-                                    Toast.makeText(LoginActivity.this, "아이디 또는 패스워드를 확인해주세요", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, "아이디 또는 패스워드를 확인해주세요", Toast.LENGTH_SHORT).show(); //아이디와 비밀번호를 맞게 입력하지않았을경우 토스트 메세지
                                 }
                             }
 

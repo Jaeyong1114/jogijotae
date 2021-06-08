@@ -17,13 +17,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class password_reset extends AppCompatActivity {
 
-private FirebaseAuth mAuth;
+private FirebaseAuth mAuth; //유저 정보  받기위해
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_reset);
 
-        mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();  //유저정보 연결
 
         findViewById(R.id.btn_emailsend).setOnClickListener(onClickListener);
     }
@@ -41,11 +41,11 @@ private FirebaseAuth mAuth;
 
         if(email.length() > 0){
 //이메일이 정상적으로 입력되었을경우
-            mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+            mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() { //패스워드 재설정이메일보냄
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
-                        startToast("이메일을 보냈습니다");
+                        startToast("이메일을 보냈습니다"); //토스트메세지 출력
 
                     }
 
@@ -53,7 +53,7 @@ private FirebaseAuth mAuth;
 
             });
         } else { //이메일 입력이 되지않았을경우
-            startToast("이메일을 입력해 주세요");
+            startToast("이메일을 입력해 주세요"); //토스트메세지 출력
         }
     }
 

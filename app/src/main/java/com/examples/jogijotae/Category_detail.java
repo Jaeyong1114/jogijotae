@@ -85,7 +85,7 @@ String[] newposition = new String[50]; //새로운포지션을 배열로 선언
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {  //리스트뷰에  아이템을 클릭했을시
 
  /*     위에서 포지션받은것을 다음 동작할 액티비티로 넘겨주면서 액티비티 전환 */
 
