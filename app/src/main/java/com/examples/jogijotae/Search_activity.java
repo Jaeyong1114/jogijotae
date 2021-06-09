@@ -49,6 +49,11 @@ public class Search_activity extends AppCompatActivity implements AdapterView.On
         list.setAdapter(adapter);
         list.setOnItemClickListener(this);
 
+        Intent intent01=getIntent();
+        String search_text;
+        search_text=intent01.getStringExtra("search_text");  // 사용자가 검색한 검색어를 인텐트로 받아옴
+
+
 
         FirebaseFirestore db = FirebaseFirestore.getInstance(); //파이어베이스 접근
 
@@ -64,7 +69,7 @@ public class Search_activity extends AppCompatActivity implements AdapterView.On
                                 Log.d(TAG, document.getId() + " => " + document.getData());
 
 
-                                if (document.getString("name").contains("가")) {         // division 이 P ( 음식점을 제외한 관광지)들의 데이터베이스를 불러옴
+                                if (document.getString("name").contains(""+search_text+"")) {         // 사용자가 검색한 내용이 포함된 관광지나 맛집의 데이터를 불러옴
                                     data.add (document.getString("name"));                // 리스트뷰의 아이템에  불러온 관광지 데이터베이스들의 이름을 넣음
                                     newposition[i++]=document.getString("position");      // 불러온 데이터베이스의 포지션값을 새로 저장
                                     adapter.notifyDataSetChanged();

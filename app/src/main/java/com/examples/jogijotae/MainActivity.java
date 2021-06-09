@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         main_txt = findViewById(R.id.main_txt);
-        main_txt.setVisibility(View.INVISIBLE);
+        main_txt.setVisibility(View.INVISIBLE); //텍스트박스 비활성화 ( 검색기능 옵션에서 클릭했을시 활성화 하려고 )
 
         place_btn=findViewById(R.id.place_btn);
         res_btn=findViewById(R.id.res_btn);
@@ -61,8 +62,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = item.getItemId();
 
         if (id == R.id.search) {
-            main_txt.setVisibility(View.VISIBLE);
-        }
+
+
+            }
+            main_txt.setVisibility(View.VISIBLE);  // 텍스트박스 활성화
+            main_txt.setOnKeyListener(new View.OnKeyListener() {
+
+
+
+                @Override
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    switch(keyCode){
+                        case KeyEvent.KEYCODE_ENTER:  // 엔터를 눌렀을시 실행
+                            String search_text = main_txt.getText().toString(); //텍스트박스에 입력된것을 search_text 에 담음
+                            Intent intent01 = new Intent(MainActivity.this,Search_activity.class);
+                            intent01.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_SINGLE_TOP); // 인텐트 중복실행 방지
+
+
+                            intent01.putExtra("search_text",search_text);  //텍스트박스에 입력된것을 담은 search_text를 인텐트로 보냄
+                            startActivity(intent01);
+                            main_txt.setVisibility(View.INVISIBLE);  //검색 기능 비활성화
+                            main_txt.setText("");      //검색어 초기화
+                            return true;
+
+                    }
+                    return false;
+
+                }
+            });
+
+
+
+
 
         if (id == R.id.logout) {
             Intent data_recevie = getIntent();
@@ -78,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra("latitude", latitude);
                 intent.putExtra("longitude", longitude);
 
-                startActivity(intent); // FristMain으로 이동
+                startActivity(intent); // FirstMain으로 이동
                 finish();
             }
             else {
