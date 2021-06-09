@@ -51,10 +51,6 @@ ImageView ivImage;
 ivImage=findViewById(R.id.iv_image);
         String imageUrl ="https://firebasestorage.googleapis.com/v0/b/jogijotae-b10e1.appspot.com/o/Resturant_images%2Fjogijotae.PNG?alt=media&token=92964853-6083-48ae-bb76-f2f053d7e609";
       Glide.with(this).load(imageUrl).into(ivImage);
-
-
-
-
     }
 
     @Override
