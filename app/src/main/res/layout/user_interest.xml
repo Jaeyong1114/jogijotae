@@ -124,7 +124,7 @@
         android:id="@+id/UI_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#BDBDBD"
+        android:background="@drawable/custom"
         android:text="취향등록"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"

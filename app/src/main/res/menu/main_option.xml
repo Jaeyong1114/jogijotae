@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/search" android:icon="@drawable/search_icon" android:title="search" app:showAsAction="always" />
+    <item android:id="@+id/logout" android:icon="@drawable/logout" android:title="logout" app:showAsAction="always" />
+    <item android:id="@+id/interest_change" android:icon="@drawable/person" android:title="interest_change" app:showAsAction="always" />
+</menu>
