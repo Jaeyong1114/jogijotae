@@ -6,27 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".FirstMain">
 
-
-
-
-
-
-
     <android.widget.Button
         android:id="@+id/button"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="32dp"
-        android:background="#03C75A"
+        android:background="@drawable/naver_icon"
         android:gravity="center"
-        android:text="네이버 로그인"
         android:textColor="#ffffff"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_image" />
 
     <android.widget.Button
         android:id="@+id/button2"
@@ -35,10 +30,9 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="32dp"
-        android:background="#BDBDBD"
+        android:background="@drawable/custom"
         android:gravity="center"
         android:text="일반 로그인"
-        android:textColor="#ffffff"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,10 +45,9 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="24dp"
-        android:background="#BDBDBD"
+        android:background="@drawable/custom"
         android:gravity="center"
         android:text="회원가입"
-        android:textColor="#ffffff"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,8 +70,10 @@
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

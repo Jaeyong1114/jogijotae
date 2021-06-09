@@ -10,8 +10,11 @@ import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = "MainActivity";
     Button place_btn, res_btn, category_btn , interest_btn;
-    Button main_btn_logout, main_btn_infoChange;
+    EditText main_txt;
     String place01 = "x", place02 = "x", place03 = "x", place04 = "x", place05 = "x", place06 = "x";
     String restarant01 = "x", restarant02 = "x", restarant03 = "x", restarant04 = "x";
 
@@ -39,20 +42,88 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        main_txt = findViewById(R.id.main_txt);
+        main_txt.setVisibility(View.INVISIBLE);
 
         place_btn=findViewById(R.id.place_btn);
         res_btn=findViewById(R.id.res_btn);
         category_btn=findViewById(R.id.category_btn);
         interest_btn=findViewById(R.id.interest_btn);
-        main_btn_logout = findViewById(R.id.main_btn_logout);
-        main_btn_infoChange = findViewById(R.id.main_btn_infoChange);
 
         place_btn.setOnClickListener(this);
         res_btn.setOnClickListener(this);
         category_btn.setOnClickListener(this);
         interest_btn.setOnClickListener(this);
-        main_btn_logout.setOnClickListener(this);
-        main_btn_infoChange.setOnClickListener(this);
+    }
+
+    @Override // 옵션메뉴에서 아이템이 선택될시 수행되는 메소드
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.search) {
+            main_txt.setVisibility(View.VISIBLE);
+        }
+
+        if (id == R.id.logout) {
+            Intent data_recevie = getIntent();
+            String email = data_recevie.getStringExtra("email");
+
+            if (email.contains("naver")) { // 유저가 네이버로 로그인 한건지 확인하기 위해 email에 "naver"라는 문자열이 있는지 여부 확인
+                Intent intent02 = getIntent();
+                double latitude = intent02.getDoubleExtra("latitude", 0);
+                double longitude = intent02.getDoubleExtra("longitude", 0);
+                Intent intent = new Intent(MainActivity.this, FirstMain.class);
+                startToast("네이버 로그아웃 되었습니다.");
+                mOAuthLoginModule.getInstance().logout(mContext); // 네이버 토큰 삭제
+                intent.putExtra("latitude", latitude);
+                intent.putExtra("longitude", longitude);
+
+                startActivity(intent); // FristMain으로 이동
+                finish();
+            }
+            else {
+                Intent intent02 = getIntent();
+                double latitude = intent02.getDoubleExtra("latitude", 0);
+                double longitude = intent02.getDoubleExtra("longitude", 0);
+                Intent intent = new Intent(MainActivity.this, FirstMain.class);
+                startToast("로그아웃 되었습니다.");
+                intent.putExtra("latitude", latitude);
+                intent.putExtra("longitude", longitude);
+                startActivity(intent); // FirstMain으로 이동
+                finish();
+            }
+        }
+        if (id == R.id.interest_change) {
+            Intent data_recevie = getIntent();
+            // 유저취향을 변경할때 어느유저가 취향을 변경하는지 확인하고 유저의 값이 null값이 되지않게 하기위해 유저의 기본정보를 넘겨줘야해서 유저의 기본정보 값을 받음
+            String email = data_recevie.getStringExtra("email");
+            String name = data_recevie.getStringExtra("name");
+            String birthyear = data_recevie.getStringExtra("birthyear");
+            String gender = data_recevie.getStringExtra("gender");
+            String mobile = data_recevie.getStringExtra("mobile");
+            Intent intent02 = getIntent();
+            double latitude = intent02.getDoubleExtra("latitude", 0);
+            double longitude = intent02.getDoubleExtra("longitude", 0);
+
+            Intent intent = new Intent(MainActivity.this, User_interest.class);
+            intent.putExtra("check", "체크");
+            intent.putExtra("email", email);
+            intent.putExtra("latitude", latitude);
+            intent.putExtra("longitude", longitude);
+            intent.putExtra("name", name);
+            intent.putExtra("birthyear", birthyear);
+            intent.putExtra("gender", gender);
+            intent.putExtra("mobile", mobile);
+            startActivity(intent); // 취향을 변경할 유저의 정보를 확인하기 위해 유저의 기본정보를 넘기면서 User_interest로 이동
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override // 옵션메뉴를 연결
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_option, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -157,58 +228,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             });
 
-        }
-        if (v.getId() == R.id.main_btn_logout) { // 로그아웃 버튼 눌렀을시
-            Intent data_recevie = getIntent();
-            String email = data_recevie.getStringExtra("email");
-
-            if (email.contains("naver")) { // 유저가 네이버로 로그인 한건지 확인하기 위해 email에 "naver"라는 문자열이 있는지 여부 확인
-                Intent intent02 = getIntent();
-                double latitude = intent02.getDoubleExtra("latitude", 0);
-                double longitude = intent02.getDoubleExtra("longitude", 0);
-                Intent intent = new Intent(MainActivity.this, FirstMain.class);
-                startToast("네이버 로그아웃 되었습니다.");
-                mOAuthLoginModule.getInstance().logout(mContext); // 네이버 토큰 삭제
-                intent.putExtra("latitude", latitude);
-                intent.putExtra("longitude", longitude);
-
-                startActivity(intent); // FristMain으로 이동
-                finish();
-            }
-            else {
-                Intent intent02 = getIntent();
-                double latitude = intent02.getDoubleExtra("latitude", 0);
-                double longitude = intent02.getDoubleExtra("longitude", 0);
-                Intent intent = new Intent(MainActivity.this, FirstMain.class);
-                startToast("로그아웃 되었습니다.");
-                intent.putExtra("latitude", latitude);
-                intent.putExtra("longitude", longitude);
-                startActivity(intent); // FirstMain으로 이동
-                finish();
-            }
-        }
-        if (v.getId() == R.id.main_btn_infoChange) {
-            Intent data_recevie = getIntent();
-            // 유저취향을 변경할때 어느유저가 취향을 변경하는지 확인하고 유저의 값이 null값이 되지않게 하기위해 유저의 기본정보를 넘겨줘야해서 유저의 기본정보 값을 받음
-            String email = data_recevie.getStringExtra("email");
-            String name = data_recevie.getStringExtra("name");
-            String birthyear = data_recevie.getStringExtra("birthyear");
-            String gender = data_recevie.getStringExtra("gender");
-            String mobile = data_recevie.getStringExtra("mobile");
-            Intent intent02 = getIntent();
-            double latitude = intent02.getDoubleExtra("latitude", 0);
-            double longitude = intent02.getDoubleExtra("longitude", 0);
-
-            Intent intent = new Intent(MainActivity.this, User_interest.class);
-            intent.putExtra("check", "체크");
-            intent.putExtra("email", email);
-            intent.putExtra("latitude", latitude);
-            intent.putExtra("longitude", longitude);
-            intent.putExtra("name", name);
-            intent.putExtra("birthyear", birthyear);
-            intent.putExtra("gender", gender);
-            intent.putExtra("mobile", mobile);
-            startActivity(intent); // 취향을 변경할 유저의 정보를 확인하기 위해 유저의 기본정보를 넘기면서 User_interest로 이동
         }
 
     }
