@@ -78,7 +78,6 @@ private static final String TAG="Category_Adapter"; //로그 찍기위한 태그
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         Category_class data = categoryclasses.get(position);
-
         // 데이터 결합
         holder.name.setText(data.getDirection()+"km\n"+data.getName()); // 거리 +km + 장소 이름 으로 데이터가 뜨게함
 

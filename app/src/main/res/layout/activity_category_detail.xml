@@ -7,6 +7,11 @@
     android:orientation="vertical"
     tools:context=".Category_detail">
 
+
+
+
+
+
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"

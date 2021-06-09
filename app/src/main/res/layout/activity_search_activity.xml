@@ -5,11 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Category_Gps_Place">
-
-
-
-
+    tools:context=".Search_activity">
 
     <ListView
         android:id="@+id/listview"
@@ -20,3 +16,5 @@
 
 
 </LinearLayout>
+
+

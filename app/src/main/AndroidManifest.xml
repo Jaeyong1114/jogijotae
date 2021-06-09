@@ -14,11 +14,12 @@
         android:roundIcon="@mipmap/jogijotae_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".Category_Gps_Res"></activity>
+        <activity android:name=".Search_activity"></activity>
+        <activity android:name=".Category_Gps_Res" />
         <activity android:name=".Interest_restarant" />
         <activity android:name=".Category_Gps_Place" />
         <activity android:name=".Category_GPS_detail" />
-        <activity android:name=".FirstMain"/>
+        <activity android:name=".FirstMain" />
         <activity android:name=".Category_detail_more" />
         <activity android:name=".Interest_place" />
         <activity android:name=".Category_detail" />
@@ -32,7 +33,7 @@
         <activity android:name=".User_interest" />
         <activity android:name=".password_reset" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".SplashActivity" >
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

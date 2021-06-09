@@ -69,7 +69,7 @@ public class Interest_place extends AppCompatActivity implements AdapterView.OnI
                                         document.getString("category3").equals(""+place06+"")){
 
                                     data.add (document.getString("name")); // 유저 취향 관광지에 이름을 리스트뷰에 추가 함
-                                    newposition[i++]=document.getString("position"); // 리스트뷰를 클릭했을 때 어떤 관강지가 클릭되었는지 확인하기위해 position 값을 배열에 넣음
+                                    newposition[i++]=document.getString("position"); // 리스트뷰를 클릭했을 때 어떤 관광지가 클릭되었는지 확인하기위해 position 값을 배열에 넣음
                                     adapter.notifyDataSetChanged();
                                 }
                             }

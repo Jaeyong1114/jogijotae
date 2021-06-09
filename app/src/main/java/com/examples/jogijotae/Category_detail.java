@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +31,7 @@ int i = 0; // 포지션에 값을주기위해사용
 
     private ListView list; //리스트뷰 사용
     private   List<String> data =new ArrayList<>(); //  스트링배열 데이터 만들어서 arrayList 에서 받는값들  데이터에 넣기위해 선언
+
     private static final String TAG = "Category_detail"; // 로그찍기위한 태그
 
 String[] newposition = new String[50]; //새로운포지션을 배열로 선언
@@ -38,11 +42,14 @@ String[] newposition = new String[50]; //새로운포지션을 배열로 선언
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_detail);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,data); //리스트뷰 사용위한 ArrayAdapter
-        list =findViewById(R.id.listview);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, data); //리스트뷰 사용위한 ArrayAdapter
+        list = findViewById(R.id.listview);
 
         list.setAdapter(adapter);
         list.setOnItemClickListener(this);
+
+
+
 
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();                //파이어베이스 접근
@@ -77,12 +84,20 @@ String[] newposition = new String[50]; //새로운포지션을 배열로 선언
                         } else {
                             //Log.d(TAG, "Error getting documents: ", task.getException());
                         }
+
                     }
+
                 });
 
 
 
     }
+
+
+
+
+
+
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {  //리스트뷰에  아이템을 클릭했을시

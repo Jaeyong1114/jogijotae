@@ -114,5 +114,7 @@ public class Category_Gps_Place extends AppCompatActivity {
         categoryAdapter = new Category_Adapter(this, categoryclasses);
         recyclerView.setAdapter(categoryAdapter);
 
+
+
     }
 }
