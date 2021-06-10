@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             }
-            main_txt.setVisibility(View.VISIBLE);  // 텍스트박스 활성화
+            main_txt.setVisibility(View.VISIBLE);  //검색 텍스트박스 활성화
             main_txt.setOnKeyListener(new View.OnKeyListener() {
 
 
@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         if (id == R.id.logout) {
+            main_txt.setVisibility(View.INVISIBLE); //옵션메뉴에 검색 텍스트박스 비활성화
             Intent data_recevie = getIntent();
             String email = data_recevie.getStringExtra("email");
 
@@ -125,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         if (id == R.id.interest_change) {
+            main_txt.setVisibility(View.INVISIBLE); //옵션메뉴에 검색 텍스트박스 비활성화
             Intent data_recevie = getIntent();
             // 유저취향을 변경할때 어느유저가 취향을 변경하는지 확인하고 유저의 값이 null값이 되지않게 하기위해 유저의 기본정보를 넘겨줘야해서 유저의 기본정보 값을 받음
             String email = data_recevie.getStringExtra("email");

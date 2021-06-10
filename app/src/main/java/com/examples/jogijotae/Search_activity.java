@@ -32,7 +32,7 @@ public class Search_activity extends AppCompatActivity implements AdapterView.On
 
     private ListView list;  //리스트뷰 선언
     private   List<String> data =new ArrayList<>();  //  스트링배열 데이터 만들어서 arrayList 에서 받는값들  데이터에 넣기위해 선언
-    private static final String TAG = "Placemain"; // 로그찍기위한 태그
+    private static final String TAG = "Search_activity"; // 로그찍기위한 태그
 
     String[] newposition = new String[50]; //새로운 포지션을 받기위해  배열로 선언
     @Override
@@ -70,7 +70,7 @@ public class Search_activity extends AppCompatActivity implements AdapterView.On
 
 
                                 if (document.getString("name").contains(""+search_text+"")) {         // 사용자가 검색한 내용이 포함된 관광지나 맛집의 데이터를 불러옴
-                                    data.add (document.getString("name"));                // 리스트뷰의 아이템에  불러온 관광지 데이터베이스들의 이름을 넣음
+                                    data.add (document.getString("name"));                // 리스트뷰의 아이템에  검색된 데이터베이스들의 이름을 넣음
                                     newposition[i++]=document.getString("position");      // 불러온 데이터베이스의 포지션값을 새로 저장
                                     adapter.notifyDataSetChanged();
                                 }
