@@ -69,7 +69,12 @@ public class Search_activity extends AppCompatActivity implements AdapterView.On
                                 Log.d(TAG, document.getId() + " => " + document.getData());
 
 
-                                if (document.getString("name").contains(""+search_text+"")) {         // 사용자가 검색한 내용이 포함된 관광지나 맛집의 데이터를 불러옴
+                                if ((document.getString("name").contains(""+search_text+"")) || ((document.getString("category").contains(""+search_text+""))
+                                        || (document.getString("category2").contains(""+search_text+""))
+                                        || (document.getString("category3").contains(""+search_text+""))
+                                        || (document.getString("phone").contains(""+search_text+""))
+                                        || (document.getString("address").contains(""+search_text+""))
+                                        ||(document.getString("ex").contains(""+search_text+"")))){         // 사용자가 검색한 내용이 포함된 관광지나 맛집의 데이터를 불러옴
                                     data.add (document.getString("name"));                // 리스트뷰의 아이템에  검색된 데이터베이스들의 이름을 넣음
                                     newposition[i++]=document.getString("position");      // 불러온 데이터베이스의 포지션값을 새로 저장
                                     adapter.notifyDataSetChanged();
