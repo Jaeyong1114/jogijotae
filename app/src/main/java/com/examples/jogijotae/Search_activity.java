@@ -68,7 +68,7 @@ public class Search_activity extends AppCompatActivity implements AdapterView.On
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
 
-
+                                // 유저가 검색한 값이 파이어스토어 Place에 name, category, category2, category3, phone, address, ex 값에 포함되어 있으면 수행
                                 if ((document.getString("name").contains(""+search_text+"")) || ((document.getString("category").contains(""+search_text+""))
                                         || (document.getString("category2").contains(""+search_text+""))
                                         || (document.getString("category3").contains(""+search_text+""))

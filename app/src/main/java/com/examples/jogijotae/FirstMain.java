@@ -42,9 +42,9 @@ ImageView ivImage;
         setContentView(R.layout.activity_first_main);
 
         mContext = getApplicationContext();
-    btn01=findViewById(R.id.button);
-    btn02=findViewById(R.id.button2);
-    btn03=findViewById(R.id.button3);
+    btn01=findViewById(R.id.naver_login);
+    btn02=findViewById(R.id.normal_login);
+    btn03=findViewById(R.id.register);
     btn01.setOnClickListener(this);
     btn02.setOnClickListener(this);
     btn03.setOnClickListener(this);
@@ -55,7 +55,7 @@ ivImage=findViewById(R.id.iv_image);
 
     @Override
     public void onClick(View v) {
-        if (v.getId()== R.id.button) { // 네이버 로그인 버튼 클릭시
+        if (v.getId()== R.id.naver_login) { // 네이버 로그인 버튼 클릭시
 
 
             mOAuthLoginModule = OAuthLogin.getInstance();
@@ -99,7 +99,7 @@ ivImage=findViewById(R.id.iv_image);
             mOAuthLoginModule.startOauthLoginActivity(FirstMain.this, mOAuthLoginHandler);
         }
 
-        if(v.getId()==R.id.button2){ // 로그인하기 버튼 클릭시 로그인 액티비티로 이동
+        if(v.getId()==R.id.normal_login){ // 로그인하기 버튼 클릭시 로그인 액티비티로 이동
             Intent intent = getIntent();
             double latitude = intent.getDoubleExtra("latitude", 0);
             double longitude = intent.getDoubleExtra("longitude", 0);
@@ -109,7 +109,7 @@ ivImage=findViewById(R.id.iv_image);
             intent01.putExtra("longitude", longitude);
             startActivity(intent01);
         }
-        if(v.getId()==R.id.button3){ // 회원가입 할 수 있는 RegisterActivity로 이동
+        if(v.getId()==R.id.register){ // 회원가입 할 수 있는 RegisterActivity로 이동
             Intent intent02 = new Intent(this, RegisterActivity.class);
             Intent intent = getIntent();
             double latitude = intent.getDoubleExtra("latitude", 0);
