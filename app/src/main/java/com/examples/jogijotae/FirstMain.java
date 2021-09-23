@@ -31,7 +31,7 @@ import org.json.JSONObject;
 public class FirstMain extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "FirstMain";
 
-    Button btn01,btn02,btn03;
+    Button btn01,btn02,btn03; // sex
 ImageView ivImage;
     OAuthLogin mOAuthLoginModule;
     Context mContext;
